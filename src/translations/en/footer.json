@@ -1,0 +1,49 @@
+{
+    "logo": {
+        "src": "/assets/img/logo.svg",
+        "alt": "Dunderville goose logo",
+        "href": "/"
+    },
+    "general": {
+        "contact": {
+            "title": "General & New Business",
+            "mailto": "mailto:hi@dunderville.se",
+            "email": "hi@dunderville.se",
+            "phonenumber": "072 398 27 33"
+        },
+        "address": {
+            "title": "Address",
+            "address": "Dunderville AB Stora Varvsgatan 6A 211 19 Malmö"
+        }
+    },
+    "contact": [
+        {
+            "title": "Erik Arheden - Producer",
+            "mailto": "mailto:erik@dunderville.se",
+            "email": "erik@dunderville.se",
+            "phonenumber": "072 398 27 33"
+        },
+        {
+            "title": "Jonas Kornhall - Producer",
+            "mailto": "mailto:jonas@dunderville.se",
+            "email": "jonas@dunderville.se",
+            "phonenumber": "070 673 86 45"
+        }
+    ],
+    "web" : {
+        "title": "On the web",
+        "item": [
+            {
+                "title": "Instagram",
+                "href": "https://www.instagram.com/",
+                "icon": "/assets/img/link-arrow.svg"
+            },
+            {
+                "title": "Vimeo",
+                "href": "https://www.vimeo.com/",
+                "icon": "/assets/img/link-arrow.svg"
+            }
+        ]
+    },
+    "statement": "all ©rights to the dunderville press"
+}

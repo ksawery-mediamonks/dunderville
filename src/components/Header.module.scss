@@ -1,0 +1,246 @@
+@import 'styles/partials/lists';
+@import 'styles/partials/buttons';
+// @import 'styles/core/base';
+
+.list {
+    @extend .list--horizontal;
+}
+
+.item {
+    @extend .list__item;
+    // display: inline-block;
+
+    // vertical-align: top;
+
+    &:not(:last-child) {
+        margin-right: rem(10px);
+    }
+}
+
+.active {
+    position: relative;
+    display: inline-block;
+}
+
+.active::before {
+    position: absolute;
+    top: 0;
+    right: rem(-5px);
+    bottom: 0;
+    left: rem(-5px);
+
+    height: rem(2px);
+
+    margin: auto 0;
+
+    background-color: $color-dark-charcoal;
+
+    content: '';
+}
+
+.ir {
+    display: block;
+
+    text-shadow: none;
+
+    font: 0/0 a;
+
+    color: transparent;
+}
+
+.header {
+    padding: rem(44px) rem(25px) rem(46px) rem(25px);
+}
+
+.header__container {
+    position: relative;
+    display: flex;
+
+    width: 100%;
+    height: rem(80px);
+
+    border: rem(1px) solid $color-dark-charcoal;
+
+    background-color: transparent;
+
+    align-items: center;
+    //justify-content: space-between;
+}
+
+.header__logo {
+    position: relative;
+
+    width: rem(88px);
+    height: rem(80px);
+
+    margin-right: rem(41px) !important; //TODO WHY IT NEEDS IMPORTANT!
+
+    &::before {
+        position: absolute;
+        top: rem(22px);
+        right: 0;
+
+        width: rem(1px);
+        height: rem(34px);
+
+        background-color: $color-dark-charcoal;
+
+        content: '';
+    }
+}
+
+.header__logo-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    width: rem(32px);
+    height: rem(48px);
+
+    margin: auto;
+}
+
+.header__title {
+    font-family: $font-mono-light;
+    font-size: rem(15px);
+    letter-spacing: rem(2px);
+
+    text-transform: uppercase;
+
+    &:last-child {
+        display: none;
+    }
+}
+
+.button-menu {
+    position: relative;
+
+    width: rem(88px);
+    height: rem(80px);
+
+    margin: 0 0 0 auto !important; //TODO WHY IT NEEDS IMPORTANT!
+
+    &::before {
+        position: absolute;
+        top: rem(5px);
+        left: rem(4px);
+
+        width: 100%;
+        height: 100%;
+
+        background-color: $color-black;
+
+        content: '';
+    }
+}
+
+.button-menu__block {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: $color-dark-charcoal;
+}
+
+.button-menu__icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    img {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        width: rem(29px);
+        height: rem(20px);
+
+        margin: auto;
+    }
+}
+
+.navigation {
+    display: none;
+}
+
+.link {
+    text-decoration: none;
+
+    color: $color-charleston-green;
+}
+
+@include mq-wide {
+    .item {
+        &:not(:last-child) {
+            margin-right: rem(110px);
+        }
+    }
+
+    .header {
+        padding: rem(53px) rem(80px);
+    }
+
+    .header__container {
+        height: rem(50px);
+
+        padding: 0 rem(12px);
+
+        border-top: rem(1px) solid $color-dark-charcoal;
+        border-right: none;
+        border-bottom: rem(1px) solid $color-dark-charcoal;
+        border-left: none;
+
+        justify-content: space-between;
+    }
+
+    .header__title {
+        font-size: rem(10px);
+
+        &:last-child {
+            display: block;
+        }
+    }
+
+    .button-menu {
+        display: none;
+    }
+
+    .navigation {
+        display: block;
+
+        font-family: $font-plaak;
+        font-size: rem(12px);
+
+        text-transform: uppercase;
+    }
+
+    .header__logo-icon {
+        width: auto;
+        height: rem(80px);
+
+        content: url('/assets/img/logo.svg');
+    }
+
+    .header__logo {
+        position: absolute;
+        right: 0;
+        left: 0;
+
+        margin-right: auto !important; //TODO WHY IT NEEDS IMPORTANT!
+        margin-left: auto!important; //TODO WHY IT NEEDS IMPORTANT!
+
+        background-color: $color-chinese-white !important; //TODO WHY IT NEEDS IMPORTANT!
+
+        &::before {
+            display: none;
+        }
+    }
+}

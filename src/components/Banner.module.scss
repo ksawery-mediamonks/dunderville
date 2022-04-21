@@ -1,0 +1,29 @@
+.banner {
+    height: rem(146px);
+
+    margin: 0 0 rem(44px) rem(25px);
+}
+
+.banner__container {
+    height: 100%;
+    overflow: hidden;
+
+    svg {
+        height: 100%;
+    }
+}
+
+@include mq-regular {
+    .banner {
+        height: 100%;
+
+        margin: 0 rem(25px) rem(44px) rem(25px);
+    }
+}
+
+@include mq-wide {
+    .banner {
+        // height: rem(183px);
+        margin: 0 rem(80px) rem(80px) rem(80px);
+    }
+}

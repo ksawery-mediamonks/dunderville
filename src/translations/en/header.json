@@ -1,0 +1,51 @@
+{
+    "logo": {
+        "src-narrow": "/assets/img/logo-feather.svg",
+        "src-wide": "/assets/img/logo.svg",
+        "alt": "Dunderville feather logo",
+        "href": "/"
+    },
+
+    "copy": {
+        "main": "The chronicles of dunderville, Sweden",
+        "main-wide": "the chronicles of a creative studio",
+        "home-main-wide": "the chronicles of a creative motion studio",
+        "secondary": "based in malmö, sweden"
+    },
+
+    "menu": {
+        "copy": "Menu",
+        "aria-label": "Open menu"
+    },
+
+    "navigation": [
+        {
+            "button": {
+                "item": "I. ",
+                "copy": "Studio",
+                "href": "/studio"
+            }
+        },
+        {
+            "button": {
+                "item": "II. ",
+                "copy": "The Work",
+                "href": "/the-work"
+            }
+        },
+        {
+            "button": {
+                "item": "III. ",
+                "copy": "Process",
+                "href": "/process"
+            }
+        },
+        {
+            "button": {
+                "item": "IV. ",
+                "copy": "Contact",
+                "href": "/contact"
+            }
+        }
+    ]
+}

@@ -1,0 +1,241 @@
+.footer {
+    position: relative;
+
+    border-top: rem(1px) solid $color-dark-charcoal;
+
+    font-family: $font-mono;
+}
+
+.footer__logo-img {
+    width: rem(95px);
+    height: rem(163px);
+}
+
+.footer__block {
+    display: inline-block;
+
+    font-size: rem(29px);
+
+    vertical-align: top;
+
+    color: $color-dark-charcoal;
+
+    &:first-of-type {
+        width: 39.3%;
+
+        padding: rem(72px) rem(91px);
+    }
+
+    &:nth-of-type(2) {
+        width: 60.7%;
+
+        padding: rem(72px) rem(68px);
+
+        border-left: rem(1px) solid $color-dark-charcoal;
+    }
+
+    &:nth-of-type(3) {
+        width: 60.7%;
+
+        padding: rem(70px) rem(63px);
+
+        border-top: rem(1px) solid $color-dark-charcoal;
+        border-right: rem(1px) solid $color-dark-charcoal;
+
+        .footer__data {
+            margin-bottom: rem(63px);
+        }
+    }
+
+    &:nth-of-type(4) {
+        width: 39.3%;
+
+        padding: rem(69px) rem(57px);
+
+        border-top: rem(1px) solid $color-dark-charcoal;
+
+        .footer__block-title {
+            margin-bottom: rem(29px);
+        }
+
+        .footer__block-item {
+            margin-bottom: rem(56px);
+        }
+    }
+}
+
+.footer__block-icon {
+    width: rem(17px);
+    height: rem(18px);
+
+    margin-left: rem(8px);
+}
+
+.footer__block-title {
+    display: block;
+
+    margin-bottom: rem(29px);
+
+    font-family: $font-mono-light;
+    font-size: rem(22px);
+
+    color: $color-charleston-green;
+}
+
+.footer__block-link {
+    display: block;
+
+    color: $color-dark-charcoal;
+
+    &:hover,
+    &:hover > svg {
+        color: $color-spanish-pink;
+
+        fill: $color-spanish-pink;
+    }
+}
+
+
+.footer__data {
+    max-width: rem(305px);
+
+    margin-bottom: rem(50px);
+
+    line-height: rem(51px);
+}
+
+.footer__statement {
+    display: flex;
+
+    height: rem(163px);
+
+    background-color: $color-dark-charcoal;
+
+    font-family: $font-mono-light;
+    font-size: rem(16px);
+    letter-spacing: rem(3px);
+
+    text-align: center;
+    text-transform: uppercase;
+
+    color: $color-spanish-pink;
+
+    justify-content: center;
+    align-items: center;
+}
+
+@include mq-regular {
+    .footer__logo-img {
+        width: rem(60px);
+        height: rem(102px);
+    }
+
+    .footer__block {
+        &:first-of-type {
+            padding: rem(83px) rem(175px);
+        }
+    }
+}
+
+@include mq-wide {
+    .footer {
+        border: none;
+
+        &:before {
+            position: absolute;
+            top: rem(-1px);
+            right: 0;
+            left: 0;
+            z-index: 1;
+
+            width: 90%;
+
+            margin-right: auto;
+            margin-left: auto;
+
+            border-bottom: solid rem(1px) $color-dark-charcoal;
+
+            content: '';
+        }
+    }
+
+    .footer__block-title {
+        margin-bottom: rem(16px);
+
+        font-size: rem(14px);
+    }
+
+    .footer__data {
+        max-width: rem(190px);
+
+        line-height: rem(32px);
+    }
+
+    .footer__block-item {
+        display: inline-block;
+
+        width: 45%;
+
+        vertical-align: top;
+    }
+
+    .footer__block {
+        font-size: rem(18px);
+
+        &:first-of-type {
+            position: absolute;
+
+            width: rem(452px);
+            height: 100%;
+
+            border-right: rem(1px) solid $color-dark-charcoal;
+        }
+
+        &:nth-of-type(2) {
+            margin-left: rem(452px);
+            padding: rem(71px) 0 rem(41px) rem(61px);
+
+            border: none;
+        }
+
+        &:nth-of-type(3) {
+            margin-left: rem(452px);
+            padding: 0 0 rem(89px) rem(61px);
+
+            border: none;
+
+            .footer__data {
+                margin-bottom: 0;
+            }
+        }
+
+        &:nth-of-type(4) {
+            margin-left: rem(452px);
+            padding: 0 0 0 rem(61px);
+
+            border: none;
+
+            .footer__block-item {
+                display: block;
+            }
+
+            .footer__block-item:nth-last-child(n+2) {
+                margin-bottom: rem(16px);
+            }
+        }
+    }
+
+    .footer__block-icon {
+        width: rem(9px);
+        height: rem(10px);
+
+        margin-left: rem(8px);
+    }
+
+    .footer__statement {
+        height: rem(85px);
+
+        font-size: rem(10px);
+        letter-spacing: rem(3px);
+    }
+}

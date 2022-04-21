@@ -1,0 +1,19 @@
+.section {
+    margin: rem(44px) rem(25px);
+}
+
+.video-player {
+    width: 100%;
+    height: rem(712px);
+
+    background: url('/assets/img/poster-wide.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+@include mq-wide {
+    .video-player {
+        height: rem(689px);
+    }
+}

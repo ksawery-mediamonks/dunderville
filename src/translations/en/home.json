@@ -1,0 +1,21 @@
+{
+    "meta__title": "Dunderville",
+    "heading": "Dunderville",
+    "cta": "I'm a button tag",
+    "internal-link": "Go to form page",
+    "external-link": "Go to google",
+    "video": {
+        "title": "href",
+        "href": "href",
+        "aria-label": "desription"
+    },
+    "section": {
+        "title": "I. the studio",
+        "heading-part-1-focus": "A",
+        "heading-part-1": "Creative motion studio",
+        "heading-part-2-focus": "In",
+        "heading-part-2": "Malmö, Sweden.",
+        "button-copy": "Read all about it",
+        "button-href": "/studio"
+    }
+}

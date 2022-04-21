@@ -1,0 +1,77 @@
+.section {
+    margin: rem(44px) rem(25px) rem(92px) rem(25px);
+
+    text-align: center;
+}
+
+.section__title {
+    font-family: $font-plaak;
+    font-size: rem(19px);
+    letter-spacing: rem(7px);
+}
+
+.section__heading {
+    margin: rem(25px) 0 rem(74px) 0;
+
+    font-family: $font-plaak-bold;
+    font-size: rem(120px);
+    letter-spacing: rem(-1px);
+    line-height: rem(100px);
+}
+
+.focus {
+    margin: 0 rem(26px);
+
+    border-bottom: rem(6px) solid $color-dark-charcoal;
+
+    font-size: rem(84px);
+
+    vertical-align: text-top;
+
+    &:first-of-type {
+        margin: 0 rem(26px) 0 0;
+    }
+}
+
+.button-box-shadow {
+    // width: rem(332px);
+
+    //padding: rem(40px) rem(54px);
+
+    // border: rem(1px) solid $color-dark-charcoal;
+
+    // font-family: $font-plaak;
+    // font-size: rem(20px);
+    // font-weight: 500;
+    // letter-spacing: rem(2px);
+
+    // color: $color-dark-charcoal;
+}
+
+.button-box-shadow__wrapper {
+    position: relative;
+    display: inline-block;
+
+    padding: 1.125rem 1.5rem;
+
+    border: 1px solid #303030;
+
+    background-color: #e6e2dd;
+
+    transition: background-color 0.3s;
+
+    font-family: Plaak-SemicondensedRegular,sans-serif;
+    font-size: 0.625rem;
+    font-weight: 400;
+    letter-spacing: 0.25em;
+
+    text-transform: uppercase;
+
+    color: #000000;
+}
+
+@include mq-wide {
+    .section {
+        margin: rem(44px) rem(25px);
+    }
+}
