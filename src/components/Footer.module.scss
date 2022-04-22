@@ -85,6 +85,8 @@
 .footer__block-link {
     display: block;
 
+    text-decoration: none;
+
     color: $color-dark-charcoal;
 
     &:hover,
@@ -94,7 +96,6 @@
         fill: $color-spanish-pink;
     }
 }
-
 
 .footer__data {
     max-width: rem(305px);

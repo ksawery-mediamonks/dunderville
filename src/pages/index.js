@@ -6,7 +6,10 @@ import { withTranslation, getTranslation } from 'utils/translations/i18n';
 //import Button from 'components/Button';
 import Banner from 'components/Banner';
 import VideoPlayer from 'components/VideoPlayer';
-import AboutSection from 'components/AboutSection';
+
+import SectionAbout from 'components/SectionAbout';
+import SectionShowcase from 'components/SectionShowcase';
+import SectionInfo from 'components/SectionInfo';
 
 class Home extends Component {
     el = createRef();
@@ -35,7 +38,9 @@ class Home extends Component {
 
                 <Banner />
                 <VideoPlayer />
-                <AboutSection t={t} />
+                <SectionAbout t={t} />
+                <SectionShowcase t={t} />
+                <SectionInfo t={t} />
 
                 {/* <h1>{t('home:heading')}</h1> */}
 

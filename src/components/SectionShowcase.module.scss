@@ -1,0 +1,159 @@
+@import 'styles/partials/lists';
+
+.section {
+    padding: rem(70px) rem(25px) rem(32px);
+
+    background-color: $color-dark-charcoal;
+
+    text-align: center;
+
+    color: $color-chinese-white;
+}
+
+.section__title {
+    margin: 0 0 rem(69px);
+
+    font-family: $font-plaak;
+    font-size: rem(19px);
+    letter-spacing: rem(7px);
+}
+
+.list {
+    @extend .list--horizontal;
+
+    border: rem(1px) solid $color-chinese-white;
+
+    .item:not(:last-child) {
+        border-bottom: rem(1px) solid $color-chinese-white;
+    }
+
+    .item:last-child {
+        background-color: $color-chinese-white;
+
+        .button-case__title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+
+            transform: translate(-50%, -50%);
+
+            font-size: rem(95px);
+
+            color: $color-dark-charcoal;
+        }
+
+        .button-case__icon {
+            fill: $color-dark-charcoal;
+        }
+    }
+}
+
+.button-case {
+    position: relative;
+    display: inline-block;
+
+    width: 100%;
+    height: rem(187px);
+    overflow: hidden;
+
+    font-size: rem(95px);
+
+    color: $color-chinese-white;
+
+    &__title {
+        position: absolute;
+        top: rem(20px);
+        right: 0;
+        left: 0;
+
+        margin-right: auto;
+        margin-left: auto;
+
+        font-family: $font-plaak-bold;
+        font-size: rem(145px);
+
+        text-align: center;
+    }
+
+    &__number {
+        position: absolute;
+        top: rem(31px);
+        left: rem(42px);
+
+        font-family: $font-plaak;
+        font-size: rem(17px);
+    }
+
+    &__icon {
+        position: absolute;
+        top: rem(89px);
+        right: rem(33px);
+
+        width: rem(26px);
+        height: rem(9px);
+
+        fill: $color-chinese-white;
+    }
+}
+
+@include mq-wide {
+    .section {
+        padding: rem(69px) rem(80px);
+
+        text-align: center;
+    }
+
+    .section__title {
+        font-size: rem(12px);
+    }
+
+    .item:last-child {
+        .button-case__title {
+            position: relative;
+
+            font-size: rem(102px);
+        }
+    }
+
+    .button-case {
+        position: relative;
+
+        width: 100%;
+        height: rem(312px);
+
+        &__title {
+            //line-height: rem(197px);
+            position: absolute;
+            top: rem(8px);
+            right: 0;
+            left: rem(72px);
+            left: 0;
+
+            margin-right: auto;
+            margin-left: auto;
+
+            font-size: rem(242px);
+        }
+
+        &__title:last-child {
+            border-bottom: 3px dashed pink;
+        }
+
+        &__number {
+            top: rem(52px);
+            left: rem(72px);
+
+            font-size: rem(28px);
+        }
+
+        &__icon {
+            top: unset;
+            right: 0;
+            bottom: rem(45px);
+            left: 0;
+
+            margin-right: auto;
+            margin-left: auto;
+        }
+    }
+}

@@ -1,0 +1,52 @@
+//@import 'src/styles/core/base';
+
+.ir {
+    display: block;
+
+    text-shadow: none;
+
+    font: 0/0 a;
+
+    color: transparent;
+}
+
+.section {
+    margin: rem(60px) rem(25px) rem(92px) rem(25px);
+
+    text-align: center;
+}
+
+.section__title {
+    margin: 0 0 rem(40px) 0;
+
+    font-family: $font-plaak;
+    font-size: rem(19px);
+    letter-spacing: rem(7px);
+}
+
+.info-block__title {
+    margin: 0 0 rem(40px) 0;
+
+    font-family: $font-plaak-bold;
+    font-size: rem(73px);
+    letter-spacing: rem(-2px);
+}
+
+.info-block__img {
+    width: 100%;
+    height: 100%;
+}
+
+.info-block__button {
+    position: relative;
+    display: block;
+
+    width: rem(170px);
+    height: rem(96px);
+
+    margin: 0 auto;
+
+    background-color: $color-dark-charcoal;
+
+    transition: background-color 0.3s;
+}

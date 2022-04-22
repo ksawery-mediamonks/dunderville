@@ -9,7 +9,7 @@
         "href": "href",
         "aria-label": "desription"
     },
-    "section": {
+    "section-about": {
         "title": "I. the studio",
         "heading-part-1-focus": "A",
         "heading-part-1": "Creative motion studio",
@@ -17,5 +17,49 @@
         "heading-part-2": "Malmö, Sweden.",
         "button-copy": "Read all about it",
         "button-href": "/studio"
+    },
+    "section-showcase": {
+        "title": "II. casestudies",
+        "list": [
+            {
+                "title": "Brio Toys",
+                "href": "/the-work",
+                "background-image": "href",
+                "number": "II.I"
+            },
+            {
+                "title": "Tetra Pak",
+                "href": "/the-work",
+                "background-image": "href",
+                "number": "II.II"
+            },
+            {
+                "title": "Meca",
+                "href": "/the-work",
+                "background-image": "href",
+                "number": "II.III"
+            },
+            {
+                "title": "More Work",
+                "href": "/the-work"
+            }
+        ]
+    },
+    "section-info": {
+        "title": "more to read",
+        "block": [
+            {
+                "title": "III. Our process",
+                "href": "/process",
+                "img": "/assets/img/process.png"
+            },
+            {
+                "title": "IV. contact",
+                "href": "/contact",
+                "img": "/assets/img/contact.png"
+            }
+        ]
     }
+
+    
 }
