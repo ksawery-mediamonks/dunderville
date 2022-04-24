@@ -1,0 +1,32 @@
+@import 'styles/partials/lists';
+@import 'styles/partials/buttons';
+// @import 'styles/core/base';
+
+.list {
+    @extend .list--horizontal;
+}
+
+.item {
+    @extend .list__item;
+
+    &:not(:last-child) {
+        margin-right: rem(118px);
+    }
+}
+
+.link {
+    text-decoration: none;
+
+    color: $color-dark-charcoal;
+}
+
+.navigation {
+    display: flex;
+
+    font-family: $font-plaak;
+    font-size: rem(12px);
+
+    text-transform: uppercase;
+
+    justify-content: center;
+}

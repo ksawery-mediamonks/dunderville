@@ -23,3 +23,49 @@
         outline: none;
     }
 }
+
+.info-block__button {
+    position: relative;
+
+    width: rem(170px);
+    height: rem(96px);
+
+    margin: 0 auto;
+    padding: 1rem 2rem;
+
+    background-color: $color-dark-charcoal;
+
+    svg {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        width: rem(26px);
+        height: rem(9px);
+
+        margin: auto;
+
+        fill: $color-chinese-white;
+    }
+}
+
+@include mq-wide {
+    .info-block__button {
+        width: rem(71px);
+        height: rem(40px);
+
+        order: 3;
+
+        svg {
+            width: rem(16px);
+            height: rem(5px);
+        }
+    }
+}
+
+
+// .info-block__button {
+//     background-color: pink;
+// }
