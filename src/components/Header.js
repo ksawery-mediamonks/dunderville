@@ -1,8 +1,10 @@
 import styles from './Header.module.scss';
 
 import React, { Component } from 'react';
-import classNames from 'classnames';
+
 import Button from 'components/Button';
+import Logo from 'components/Logo';
+import NavigationBar from 'components/NavigationBar';
 
 import { Router } from 'next/router';
 
@@ -24,7 +26,7 @@ export default class Header extends Component {
         this._setupEventListers();
         this._resize();
 
-        this._detectRoute();
+        this._detectRoutePath();
     }
 
     componentWillUnmount() {
@@ -42,11 +44,19 @@ export default class Header extends Component {
                 <div className={styles.header__container}>
                     {isHome ? (
                     <div className={styles.header__logo}>
-                        <img className={styles['header__logo-icon']} src={t('header:logo.src-narrow')} alt={t('header:logo.alt')} />
+                        <Logo 
+                            className={styles['header__logo-icon']} 
+                            src={t('header:logo.src-narrow')} 
+                            alt={t('header:logo.alt')} 
+                        />
                     </div>
                         ) : (
                     <Button href="/" className={`${styles.ir} ${styles.header__logo}`}>
-                        <img className={styles['header__logo-icon']} src={t('header:logo.src-narrow')} alt={t('header:logo.alt')} />
+                        <Logo 
+                            className={styles['header__logo-icon']} 
+                            src={t('header:logo.src-narrow')} 
+                            alt={t('header:logo.alt')} 
+                        />
                     </Button>
                     )}
                     {isDesktop ? (
@@ -64,20 +74,7 @@ export default class Header extends Component {
                     {isHome ? (
                     <span className={styles.header__title}>{t('header:copy.secondary')}</span>
                         ) : (
-                    <nav className={styles.navigation}>
-                        <ol className={styles.list}>
-                            {t('header:navigation', { returnObjects: true }).map((item) => {
-                                return (
-                                    <li className={styles.item} key={item.button.copy} >
-                                        <Button href={item.button.href} className={classNames(router === item.button.href ? styles['active'] : null)}>
-                                            <span className={styles.link}>{item.button.item}</span>
-                                            <span className={styles.link}>{item.button.copy}</span>
-                                        </Button>
-                                    </li>
-                                );
-                            })}
-                        </ol>
-                    </nav>
+                    <NavigationBar t={t} router={router}/>
                     )}
                 </div>
             </header>
@@ -92,7 +89,7 @@ export default class Header extends Component {
         resizeManager.addEventListener('resize', this._resizeHandler);
         resizeManager.addEventListener('resize:complete', this._resizeHandler);
 
-        Router.events.on("routeChangeComplete", this._detectRoute);
+        Router.events.on("routeChangeComplete", this._detectRoutePath);
     }
 
     _removeEventListers() {
@@ -112,7 +109,7 @@ export default class Header extends Component {
         this.setState({ isDesktop: window.innerWidth > 1024 });
     }
 
-    _detectRoute = () => {
+    _detectRoutePath = () => {
         this.props.router === '/' ? this.setState({ isHome: true }) :
         this.setState({ isHome: false })
     }

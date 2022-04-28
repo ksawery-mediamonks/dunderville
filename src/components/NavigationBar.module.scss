@@ -21,12 +21,39 @@
 }
 
 .navigation {
-    display: flex;
+    display: none;
+}
 
-    font-family: $font-plaak;
-    font-size: rem(12px);
+.active {
+    position: relative;
+    display: inline-block;
+}
 
-    text-transform: uppercase;
+.active::before {
+    position: absolute;
+    top: 0;
+    right: rem(-5px);
+    bottom: 0;
+    left: rem(-5px);
 
-    justify-content: center;
+    height: rem(2px);
+
+    margin: auto 0;
+
+    background-color: $color-dark-charcoal;
+
+    content: '';
+}
+
+@include mq-wide {
+    .navigation {
+        display: flex;
+
+        font-family: $font-plaak;
+        font-size: rem(12px);
+
+        text-transform: uppercase;
+
+        justify-content: center;
+    }
 }
