@@ -54,25 +54,11 @@ class Home extends Component {
                 {isDesktop && 
                     <NavigationBar t={t}  />
                 }
-                {/* {isDesktop ? (
-                <NavigationBar t={t}  />
-                        ) : (
-                <span>not wide</span>
-                )} */}
                 <VideoPlayer />
                 <SectionAbout t={t} />
                 <SectionShowcase t={t} />
                 <SectionInfo t={t} />
 
-                {/* <Button className={styles.cta} onClick={this._handleCtaClick}>
-                    {t('home:cta')}
-                </Button>
-                <Button href="www.google.com" target="_blank">
-                    {t('home:external-link')}
-                </Button>
-                <Button href="/form">
-                    {t('home:internal-link')}
-                </Button> */}
             </div>
         );
     }
@@ -82,7 +68,6 @@ class Home extends Component {
 
         resizeManager.addEventListener('resize', this._resizeHandler);
         resizeManager.addEventListener('resize:complete', this._resizeHandler);
-        //console.log(window.innerWidth)
     }
 
     _removeEventListener() {
@@ -102,7 +87,6 @@ class Home extends Component {
 
     _detectWindowWidth() {
         this.setState({ isDesktop: window.innerWidth > 1024 });
-        console.log(window.innerWidth)
     }
 
     _updateBackgroundColor() {
@@ -115,8 +99,8 @@ class Home extends Component {
             y: e.clientY,
         };
 
-        console.log(this._mousePosition);
-        console.log(e);
+        // console.log(this._mousePosition);
+        // console.log(e);
     }
 
     _handleCtaClick = () => {
@@ -128,8 +112,6 @@ class Home extends Component {
         //call a private function
         this._updateMousePosition(e);
     };
-
-
 }
 
 export default withTranslation(Home);

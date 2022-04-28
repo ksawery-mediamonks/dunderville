@@ -1,10 +1,10 @@
 import styles from './Header.module.scss';
 
 import React, { Component } from 'react';
-//import Link from 'next/link';
+import classNames from 'classnames';
 import Button from 'components/Button';
-//import Router from 'next/router'
 
+import { Router } from 'next/router';
 
 import { resizeManager } from '@superherocheesecake/next-resize-manager';
 
@@ -13,7 +13,8 @@ export default class Header extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          isDesktop: false
+          isDesktop: false,
+          isHome: false
         };
 
         this.detectWindowWidth = this._detectWindowWidth.bind(this);
@@ -22,6 +23,8 @@ export default class Header extends Component {
     componentDidMount() {
         this._setupEventListers();
         this._resize();
+
+        this._detectRoute();
     }
 
     componentWillUnmount() {
@@ -32,38 +35,20 @@ export default class Header extends Component {
         const { t } = this.props;
         const { router } = this.props;
         const isDesktop = this.state.isDesktop;
-
-        if ( router === '/') {
-            return (
-                <header className={styles.header}>
-                <div className={styles.header__container}>
-                    <div className={styles.header__logo}>
-                        <img className={styles['header__logo-icon']} src={t('header:logo.src-narrow')} alt={t('header:logo.alt')} />
-                    </div>
-                    {isDesktop ? (
-                    <span className={styles.header__title}>{t('header:copy.home-main-wide')}</span>
-                        ) : (
-                    <span className={styles.header__title}>{t('header:copy.main')}</span>
-                    )}
-                    <Button className={`${styles.ir} ${styles['button-menu']}`} onClick={this._handleMenuClick}>
-                        {t('header:menu.copy')}
-                        <div className={styles['button-menu__block']}></div>
-                        <div className={styles['button-menu__icon']}>
-                            <img src='/assets/img/burger.svg' />
-                        </div>
-                    </Button>
-                    <span className={styles.header__title}>{t('header:copy.secondary')}</span>
-                </div>
-            </header>
-            );
-        }
+        const isHome = this.state.isHome;
 
         return (
             <header className={styles.header}>
                 <div className={styles.header__container}>
+                    {isHome ? (
+                    <div className={styles.header__logo}>
+                        <img className={styles['header__logo-icon']} src={t('header:logo.src-narrow')} alt={t('header:logo.alt')} />
+                    </div>
+                        ) : (
                     <Button href="/" className={`${styles.ir} ${styles.header__logo}`}>
                         <img className={styles['header__logo-icon']} src={t('header:logo.src-narrow')} alt={t('header:logo.alt')} />
                     </Button>
+                    )}
                     {isDesktop ? (
                     <span className={styles.header__title}>{t('header:copy.main-wide')}</span>
                         ) : (
@@ -76,27 +61,24 @@ export default class Header extends Component {
                             <img src='/assets/img/burger.svg' />
                         </div>
                     </Button>
+                    {isHome ? (
+                    <span className={styles.header__title}>{t('header:copy.secondary')}</span>
+                        ) : (
                     <nav className={styles.navigation}>
                         <ol className={styles.list}>
                             {t('header:navigation', { returnObjects: true }).map((item) => {
                                 return (
                                     <li className={styles.item} key={item.button.copy} >
-                                        { router === item.button.href ? (
-                                        <Button href={item.button.href} className={styles['active']}>
+                                        <Button href={item.button.href} className={classNames(router === item.button.href ? styles['active'] : null)}>
                                             <span className={styles.link}>{item.button.item}</span>
                                             <span className={styles.link}>{item.button.copy}</span>
                                         </Button>
-                                        ) : (
-                                        <Button href={item.button.href}>
-                                            <span className={styles.link}>{item.button.item}</span>
-                                            <span className={styles.link}>{item.button.copy}</span>
-                                        </Button>
-                                        )}
                                     </li>
                                 );
                             })}
                         </ol>
                     </nav>
+                    )}
                 </div>
             </header>
         );
@@ -110,7 +92,7 @@ export default class Header extends Component {
         resizeManager.addEventListener('resize', this._resizeHandler);
         resizeManager.addEventListener('resize:complete', this._resizeHandler);
 
-        //Router.events.on("routeChangeComplete", this._detectRoute);
+        Router.events.on("routeChangeComplete", this._detectRoute);
     }
 
     _removeEventListers() {
@@ -130,12 +112,14 @@ export default class Header extends Component {
         this.setState({ isDesktop: window.innerWidth > 1024 });
     }
 
-    // _detectRoute = () => {
-    //     console.log(router.pathname);
-    // }
+    _detectRoute = () => {
+        this.props.router === '/' ? this.setState({ isHome: true }) :
+        this.setState({ isHome: false })
+    }
 
     _handleMenuClick = () => {
         //call a private function
         this._openMenuOverlay();
     };
 }
+

@@ -20,6 +20,10 @@
     },
     "section-showcase": {
         "title": "II. casestudies",
+        "full-list": {
+            "title": "More Work",
+            "href": "/the-work"
+        },
         "list": [
             {
                 "title": "Brio Toys",
@@ -38,10 +42,6 @@
                 "href": "/the-work",
                 "background-image": "href",
                 "number": "II.III"
-            },
-            {
-                "title": "More Work",
-                "href": "/the-work"
             }
         ]
     },
