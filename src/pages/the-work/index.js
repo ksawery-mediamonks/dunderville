@@ -1,7 +1,9 @@
 // import Head from 'next/head';
 import React, { Component, createRef } from 'react';
 import { withTranslation, getTranslation } from 'utils/translations/i18n';
+
 import Button from 'components/Button';
+import Heading from 'components/Heading';
 
 class Work extends Component {
     el = createRef();
@@ -11,7 +13,7 @@ class Work extends Component {
 
         return (
             <div ref={this.el}>
-                <h1>{t('work:heading')}</h1>
+                <Heading title={t('work:heading')}/>
                 <Button href="/the-work/case">Go to case</Button>
             </div>
         );

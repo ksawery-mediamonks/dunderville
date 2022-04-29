@@ -1,0 +1,37 @@
+{
+    "title": "Carousel",
+    "item": [
+        {
+            "title": "Oatly",
+            "testimony": "“If I’m looking for that reliable yet creative collaboration, it's always Dunderville",
+            "author": "Tinny Ohlsson - Project Manager Oatly",
+            "logo": "/assets/img/oatly.png",
+            "logoalt": "Oatly Logo",
+            "key": "1"
+        },
+        {
+            "title": "Brio",
+            "testimony": "“If I’m looking for that reliable yet creative collaboration, it's always Dunderville",
+            "author": "Tinny Ohlsson - Project Manager Oatly",
+            "logo": "/assets/img/oatly.png",
+            "logoalt": "Oatly Logo",
+            "key": "2"
+        },
+        {
+            "title": "Tetra Pak",
+            "testimony": "“If I’m looking for that reliable yet creative collaboration, it's always Dunderville",
+            "author": "Tinny Ohlsson - Project Manager Oatly",
+            "logo": "/assets/img/oatly.png",
+            "logoalt": "Oatly Logo",
+            "key": "3"
+        },
+        {
+            "title": "Däck Team",
+            "testimony": "“If I’m looking for that reliable yet creative collaboration, it's always Dunderville",
+            "author": "Tinny Ohlsson - Project Manager Oatly",
+            "logo": "/assets/img/oatly.png",
+            "logoalt": "Oatly Logo",
+            "key": "4"
+        }
+    ]
+}

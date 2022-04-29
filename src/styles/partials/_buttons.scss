@@ -35,6 +35,16 @@
 
     background-color: $color-dark-charcoal;
 
+    transition: background-color 0.3s ease-out;
+
+    &:hover {
+        background-color: $color-spanish-pink;
+
+        svg {
+            fill: $color-dark-charcoal;
+        }
+    }
+
     svg {
         position: absolute;
         top: 0;
@@ -64,8 +74,3 @@
         }
     }
 }
-
-
-// .info-block__button {
-//     background-color: pink;
-// }

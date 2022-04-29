@@ -4,7 +4,6 @@ import Button from 'components/Button';
 import styles from './SectionInfo.module.scss';
 
 export default class SectionInfo extends Component {
-
     render() {
         const { t } = this.props;
 
@@ -27,9 +26,6 @@ export default class SectionInfo extends Component {
                         </div>
                     );
                 })}
-
-                
-
             </section>
         );
     }

@@ -1,0 +1,36 @@
+.heading {
+    margin: 0 rem(25px) rem(60px) rem(25px);
+
+    font-family: $font-plaak-bold;
+    font-size: rem(144px);
+    letter-spacing: rem(-7px);
+    line-height: rem(120px);
+
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.heading__focus {
+    display: block;
+
+    width: fit-content;
+
+    margin: rem(14px) auto 0 auto;
+    padding: 0 rem(4px) rem(4px) 0;
+
+    border: rem(8px) solid $color-dark-charcoal;
+}
+
+
+@include mq-regular {
+    .heading {
+        //padding: 0 rem(10px) rem(10px) 0;
+        font-size: rem(255px);
+        letter-spacing: rem(-12px);
+        line-height: rem(220px);
+    }
+
+    .heading__focus {
+        padding: 0 rem(10px) rem(5px) 0;
+    }
+}

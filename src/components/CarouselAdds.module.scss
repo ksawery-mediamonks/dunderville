@@ -1,0 +1,97 @@
+@import 'styles/partials/lists';
+@import 'styles/partials/buttons';
+
+.carousel {
+    position: relative;
+
+    width: 100%;
+
+    padding: 0 rem(25px);
+}
+
+.carousel__content {
+    @extend .list;
+
+    position: relative;
+
+    height: rem(1026px);
+
+    margin-bottom: rem(78px);
+}
+
+.carousel__content-block {
+    position: absolute;
+    top: 0;
+
+    height: 100%;
+    overflow: hidden;
+
+    //margin-right: rem(25px);
+}
+
+.carousel__content-item {
+    display: flex;
+
+    flex-direction: column;
+
+    width: 100%;
+    height: rem(750px);
+
+    padding: 0 rem(18px);
+
+    background-color: $color-charleston-green;
+
+    justify-content: center;
+}
+
+.carousel__content-testimony {
+    margin-bottom: rem(42px);
+
+    font-family: $font-plaak-bold;
+    font-size: rem(80px);
+
+    text-align: center;
+    text-transform: uppercase;
+
+    color: $color-spanish-pink;
+}
+
+.carousel__content-author {
+    font-family: $font-plaak;
+    font-size: rem(20px);
+    letter-spacing: rem(3px);
+
+    text-align: center;
+    text-transform: uppercase;
+
+    color: $color-spanish-pink;
+}
+
+.carousel__content-logo-container {
+    position: relative;
+
+    width: 100%;
+    height: rem(275px);
+
+    border: rem(1px) solid $color-dark-charcoal;
+
+    background-color: $color-chinese-white;
+}
+
+.carousel__content-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+
+    width: rem(200px);
+    height: auto;
+
+    transform: translate(-50%,-50%);
+}
+
+.carousel__navigation {
+}
+
+.carousel__navigation-button {
+}

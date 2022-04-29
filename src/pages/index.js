@@ -58,7 +58,6 @@ class Home extends Component {
                 <SectionAbout t={t} />
                 <SectionShowcase t={t} />
                 <SectionInfo t={t} />
-
             </div>
         );
     }
@@ -118,7 +117,7 @@ export default withTranslation(Home);
 
 // fallback to vars assigned for static export
 export const getStaticProps = ({ locale = process.env.LOCALE, locales = process.env.LOCALES }) => {
-    const shared = ['header', 'footer'];
+    const shared = ['header', 'footer', 'home'];
     const translation = getTranslation({
         locale,
         locales,

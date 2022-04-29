@@ -30,7 +30,6 @@ class Application extends React.Component {
                 <Head>
                     <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
                     <meta name="description" content="Dunderville test website"></meta>
-                    {/* <link rel="icon" type="image/png" href="/assets/favicon/favicon-192.png"></link> */}
                     <link rel="shortcut icon" href="/assets/favicon/favicon.ico" />
                     <link rel="icon" sizes="16x16 32x32 64x64" href="/assets/favicon/favicon.ico" />
                     <link rel="icon" type="image/png" sizes="196x196" href="/assets/favicon/favicon-192.png" />
