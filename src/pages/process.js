@@ -2,6 +2,9 @@
 import React, { Component, createRef } from 'react';
 import { withTranslation, getTranslation } from 'utils/translations/i18n';
 
+import Heading from 'components/Heading';
+
+
 class Process extends Component {
     el = createRef();
 
@@ -10,7 +13,7 @@ class Process extends Component {
 
         return (
             <div ref={this.el}>
-                <h1>{t('process:heading')}</h1>
+                <Heading title={t('process:heading')}/>
             </div>
         );
     }

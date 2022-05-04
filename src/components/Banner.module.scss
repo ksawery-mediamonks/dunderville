@@ -13,6 +13,14 @@
     }
 }
 
+.overflow {
+    display: inline-block;
+
+    overflow: hidden;
+
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+
 @include mq-regular {
     .banner {
         height: 100%;

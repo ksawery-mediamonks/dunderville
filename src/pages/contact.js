@@ -1,6 +1,7 @@
 // import Head from 'next/head';
 import React, { Component, createRef } from 'react';
 import { withTranslation, getTranslation } from 'utils/translations/i18n';
+import Heading from 'components/Heading';
 
 class Contact extends Component {
     el = createRef();
@@ -10,7 +11,9 @@ class Contact extends Component {
 
         return (
             <div ref={this.el}>
-                <h1>{t('contact:heading')}</h1>
+            <Heading 
+                title={t('contact:heading')}
+            />
             </div>
         );
     }
