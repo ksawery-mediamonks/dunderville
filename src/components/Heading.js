@@ -33,7 +33,5 @@ export default class Heading extends Component {
     _idFocusDefined = () => {
         this.props.focus !== undefined ? this.setState({ isFocus: true }) :
         this.setState({ isFocus: false });
-
-        console.log(this.props.focus);
     }
 }

@@ -23,11 +23,6 @@ export default class SectionAbout extends Component {
                         {t('home:section-about.button-copy')}
                     </div>
                 </Button>
-                                {/* <Button className="button-box-shadow" href={t('home:section-about.button-href')}>
-                    <div className="button-box-shadow__wrapper">
-                        {t('home:section-about.button-copy')}
-                    </div>
-                </Button> */}
             </section>
         );
     }

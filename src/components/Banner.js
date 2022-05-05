@@ -1,6 +1,6 @@
 import React, { Component, createRef } from 'react';
 import { gsap } from "gsap";
-import { DrawSVGPlugin } from 'gsap/dist/DrawSVGPlugin';
+//import { DrawSVGPlugin } from 'gsap/dist/DrawSVGPlugin';
 
 import styles from './Banner.module.scss';
 
@@ -15,12 +15,11 @@ export default class Banner extends Component {
             letterRight: [createRef(), createRef()]
         };
     
-        gsap.registerPlugin(DrawSVGPlugin);
+        //gsap.registerPlugin(DrawSVGPlugin);
     }
 
     componentDidMount() {
         this._setupEventListener();
-        this._handleOnloadAnimation();
     }
 
     componentWillUnmount() {
@@ -75,13 +74,14 @@ export default class Banner extends Component {
 
     _setupEventListener() {
         //window.addEventListener('load', this._handleOnloadAnimation);
+        this._onloadAnimation();
     }
 
     _removeEventListener() {
-        window.removeEventListener('load', this._handleOnloadAnimation);
+        window.removeEventListener('load', this._onloadAnimation);
     }
 
-    _handleOnloadAnimation = () => {
+    _onloadAnimation = () => {
         this._animateBanner();
     };
 

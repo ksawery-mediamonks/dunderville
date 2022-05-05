@@ -1,0 +1,17 @@
+.icon {
+    display: block;
+
+    width: rem(14px);
+    height: rem(38px);
+
+    margin: rem(50px) auto;
+
+    fill: $color-dark-charcoal;
+}
+
+@include mq-wide {
+    .icon {
+        width: rem(8px);
+        height: rem(23px);
+    }
+}

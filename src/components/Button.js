@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 import Link from 'next/link';
 
 import styles from './Button.module.scss';
@@ -8,6 +8,9 @@ import { isFunction } from 'utils/helpers'
 
 
 export default class Button extends Component {
+    ui = {
+        button: createRef()
+    }
 
     getClassNames() {
         const { className } = this.props;
@@ -21,7 +24,7 @@ export default class Button extends Component {
 
         if (href && target === '_blank') {
             return (
-                <a className={this.getClassNames()} href={href} target={target} onClick={this._handleClick} {...otherProps}>
+                <a ref={this.ui.button} className={this.getClassNames()} href={href} target={target} onClick={this._handleClick} {...otherProps}>
                     {children}
                 </a>
             );
@@ -30,7 +33,7 @@ export default class Button extends Component {
         if (href && target !== '_blank') {
             return (
                 <Link href={href}>
-                    <a className={this.getClassNames()} onClick={this._handleClick}>
+                    <a ref={this.ui.button} className={this.getClassNames()} onClick={this._handleClick}>
                         {children}
                     </a>
                 </Link>
@@ -38,7 +41,7 @@ export default class Button extends Component {
         }
 
         return (
-            <button className={this.getClassNames()} onClick={this._handleClick}>
+            <button ref={this.ui.button} className={this.getClassNames()} onClick={this._handleClick}>
                 {children}
             </button>
         );

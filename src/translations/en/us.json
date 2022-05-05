@@ -1,0 +1,22 @@
+{
+    "meta__title": "This is us",
+    "title": "I.II - This is us",
+    "bio": [
+        {
+            "key": 1,
+            "fullname": "Erik Arheden",
+            "role": "Producer / Partner",
+            "img": "/assets/img/bio/erik.png",
+            "imgalt": "Erik Arheden",
+            "description": "Working as a script reader and assistant in Hollywood Erik learnt the bare bones and importance of story. That has guided his work as a producer ever since. After a few years working in production he founded internationally represented motion studio Upper First. In 2016 he took the helm of an agency film department before getting back to his roots with Dunderville. Most important to Erik? Be nice, work hard, do good."
+        },
+        {
+            "key": 2,
+            "fullname": "Jonas Kornhall",
+            "role": "Producer / Partner",
+            "img": "/assets/img/bio/jonas.png",
+            "imgalt": "Erik Arheden",
+            "description": "Growing up in a military family Jonas appreciates the benefits of structure. A tidy schedule is pure pleasure to his organised heart. After learning the ropes of animation at Hyper Island, he honed his skills at Upper First. Since 2010 he has been working with composition, production management of external freelancers and most recently, producing  and directing 2D and 3D-animation projects. Jonas is always ready to go that extra klick for a well executed production. Hooah!"
+        }
+    ]
+}
