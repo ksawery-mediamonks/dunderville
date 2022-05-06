@@ -4,6 +4,11 @@
     background-color: $color-chinese-white;
 }
 
+.section-wrapper {
+    padding: rem(37px) 0 0;
+}
+
+
 .bio {
     display: block;
 
@@ -73,6 +78,12 @@
 
     width: rem(140px);
     height: rem(140px);
+
+    &:hover {
+        .bio__button-background {
+            background-color: $color-chinese-white;
+        }
+    }
 }
 
 .bio__button-background {
@@ -89,7 +100,9 @@
 
     border-radius: 50%;
 
-    background-color: pink;
+    background-color: $color-spanish-pink;
+
+    transition: background-color 0.3s;
 }
 
 .bio__button-icon {
@@ -127,19 +140,24 @@
     font-weight: 400;
     letter-spacing: rem(-1px);
     line-height: rem(42px);
+
+    text-align: initial;
+    text-transform: initial;
 }
 
 @include mq-wide {
     .section {
         max-width: none;
 
-        margin-bottom: 3.75rem;
-        padding: 3.125rem 4.875rem 0;
+        padding: 0 0 rem(100px) 0;
+    }
+
+    .section-wrapper {
+        padding: rem(57px) 0 0;
     }
 
     .bio-container {
         position: relative;
-        //max-width: 100rem;
 
         margin: rem(15px) auto 0 auto;
     }

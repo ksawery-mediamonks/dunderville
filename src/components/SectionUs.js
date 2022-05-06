@@ -12,8 +12,10 @@ export default class SectionUs extends Component {
 
         this.ui = {
             buttonText: createRef(),
+            section: createRef(),
             buttonBackground: createRef(),
-            buttonIcon: createRef()
+            buttonIcon: createRef(),
+            bioImage: createRef(),
         };
 
         this.components = {}
@@ -32,7 +34,8 @@ export default class SectionUs extends Component {
         const { t } = this.props;
 
         return (
-            <section className={styles.section}>
+            <section className={styles['section']}  ref={this.ui.section}>
+                <div className={styles['section-wrapper']}>
                 <SubHeading title={t('us:title')} />
                 <div className={styles['bio-container']}>
                     {t('us:bio', { returnObjects: true }).map((item, index) => {
@@ -43,7 +46,7 @@ export default class SectionUs extends Component {
                                 <h3 className={styles['bio__role']}>{item.role}</h3>
                                 <div className={styles['bio__image-container']}>
                                     <img className={styles['bio__image']} src={item.img} alt={item.imgalt}></img>
-                                    <Button href="/" ref={this.components.buttons[index]} className={styles['bio__button']}>
+                                    <Button onClick={this._handleButtonRevertClick} ref={this.components.buttons[index]} className={styles['bio__button']}>
                                         <svg className={styles['bio__button-text']} viewBox="0 0 106.14 106.13">
                                             <text transform="rotate(-126.15 30.4834 35.7603)">
                                             <tspan x="0" y="0">H</tspan>
@@ -81,6 +84,7 @@ export default class SectionUs extends Component {
                         );
                     })}
                 </div>
+                </div>
             </section>
         );
     }
@@ -93,23 +97,37 @@ export default class SectionUs extends Component {
         window.removeEventListener('load', this._animateButton);
     }
 
+    _handleButtonRevertClick = () => {
+        this.ui.section.current.classList.add("is-inverted");
+
+        const buttons = this.components.buttons.map((item) => item.current.ui.button.current);
+        const timeline = gsap.timeline();
+
+        timeline.fromTo(this.ui.section.current, {backgroundColor: "#303030"}, {backgroundColor: "#e6e2dd", repeat: 3, ease: "power1", duration: 0.2, opacity: 1, onComplete: this._removeState}, 0);
+
+        for (let i = 0; i < buttons.length; i++) {
+            console.log(buttons[i]);
+            timeline.fromTo(buttons[i].children[0], {fill: "#f8bebe"}, {fill: "#303030", ease: "none", duration: 0.2}, 0.4);
+            timeline.fromTo(buttons[i].children[1], {backgroundColor: "#303030"}, {backgroundColor: "#e6e2dd", ease: "power1", duration: 0.2}, 0.4);
+            timeline.fromTo(buttons[i].children[2], {fill: "#e6e2dd"}, {fill: "#303030", ease: "power1", duration: 0.2}, 0.6);
+
+            timeline.fromTo(buttons[i].children[1], {backgroundColor: "#303030"}, {backgroundColor: "#f8bebe", ease: "power1", duration: 0.2}, 0.4);
+
+        }
+    }
+
+    _removeState = () => {
+        this.ui.section.current.classList.remove("is-inverted");
+        
+    }
+
     _animateButton = () => {
         const buttons = this.components.buttons.map((item) => item.current.ui.button.current);
-        
-        console.log(buttons);
 
-        // const timeline = gsap.timeline();
-
-        // console.log(timeline);
-        // timeline.fromTo(button, {x: -100}, {duration: 1, x: 100});
-        //const timeline = gsap.timeline();
-
-        //gsap.to(button, {x: 100, duration: 1});
-        
-
-        // timeline.fromTo(
-        //     button, { y: 155}, { y: 0, duration: 1, opacity: 1, ease: "power4.out" }
-        // );
+        for (let i = 0; i < buttons.length; i++) {
+            const timeline = gsap.timeline();
+            timeline.fromTo(buttons[i].children[0], {rotation:"0"}, {rotation:"360", repeat:-1, ease: "none", duration: 7});
+        }
     };
 }
 

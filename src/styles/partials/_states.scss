@@ -1,0 +1,7 @@
+.is-inverted {
+    background-color: $color-dark-charcoal;
+}
+.is-inverted > * {
+    // CSS Property
+    color: $color-spanish-pink;
+}
