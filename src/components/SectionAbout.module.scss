@@ -53,6 +53,10 @@
 
         transform: translate(rem(5px), rem(5px));
     }
+
+    :hover {
+        background-color: $color-spanish-pink;
+    }
 }
 
 .button-box-shadow__wrapper {
@@ -64,6 +68,8 @@
     border: rem(1px) solid $color-dark-charcoal;
 
     background-color: $color-chinese-white;
+
+    transition: background-color 0.3s ease-out;
 
     font-family: $font-plaak;
     font-size: rem(20px);

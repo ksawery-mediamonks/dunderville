@@ -7,7 +7,6 @@
     "general": {
         "contact": {
             "title": "General & New Business",
-            "mailto": "mailto:hi@dunderville.se",
             "email": "hi@dunderville.se",
             "phonenumber": "072 398 27 33"
         },
@@ -19,13 +18,11 @@
     "contact": [
         {
             "title": "Erik Arheden - Producer",
-            "mailto": "mailto:erik@dunderville.se",
             "email": "erik@dunderville.se",
             "phonenumber": "072 398 27 33"
         },
         {
             "title": "Jonas Kornhall - Producer",
-            "mailto": "mailto:jonas@dunderville.se",
             "email": "jonas@dunderville.se",
             "phonenumber": "070 673 86 45"
         }

@@ -1,6 +1,7 @@
 import 'styles/main.scss';
 
 import { withTranslationApp } from 'utils/translations/i18n';
+import WatchForHover from 'utils/WatchForHover';
 // import Analytics from 'components/analytics/Analytics';
 
 import Transition from '@superherocheesecake/next-transition';
@@ -17,11 +18,17 @@ import Head from 'next/head';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 
+
 // export function reportWebVitals(props) {
 //     report(props);
 // }
 
 class Application extends React.Component {
+
+    componentDidMount() {
+        new WatchForHover();
+    }
+
     render() {
         const { Component, t, pageProps, router } = this.props;
 
@@ -60,7 +67,7 @@ class Application extends React.Component {
                     <Component {...pageProps} />
                 </Transition>
 
-                <Footer t={t}></Footer>
+                <Footer t={t} router={router.pathname}></Footer>
 
                 {/* <Analytics>
                     <GoogleGlobalSiteTag />

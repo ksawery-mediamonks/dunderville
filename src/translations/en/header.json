@@ -21,29 +21,29 @@
     "navigation": [
         {
             "button": {
-                "item": "I. ",
-                "copy": "Studio",
+                "item": "I.",
+                "copy": "I. Studio",
                 "href": "/studio"
             }
         },
         {
             "button": {
-                "item": "II. ",
-                "copy": "The Work",
+                "item": "II.",
+                "copy": "II. The Work",
                 "href": "/the-work"
             }
         },
         {
             "button": {
-                "item": "III. ",
-                "copy": "Process",
+                "item": "III.",
+                "copy": "III. Process",
                 "href": "/process"
             }
         },
         {
             "button": {
-                "item": "IV. ",
-                "copy": "Contact",
+                "item": "IV.",
+                "copy": "IV. Contact",
                 "href": "/contact"
             }
         }

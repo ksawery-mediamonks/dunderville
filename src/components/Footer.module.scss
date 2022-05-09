@@ -1,7 +1,9 @@
+$border: rem(1px) solid $color-dark-charcoal;
+
 .footer {
     position: relative;
 
-    border-top: rem(1px) solid $color-dark-charcoal;
+    border-top: $border;
 
     font-family: $font-mono;
 }
@@ -31,7 +33,7 @@
 
         padding: rem(72px) rem(68px);
 
-        border-left: rem(1px) solid $color-dark-charcoal;
+        border-left: $border;
     }
 
     &:nth-of-type(3) {
@@ -39,8 +41,8 @@
 
         padding: rem(70px) rem(63px);
 
-        border-top: rem(1px) solid $color-dark-charcoal;
-        border-right: rem(1px) solid $color-dark-charcoal;
+        border-top: $border;
+        border-right: $border;
 
         .footer__data {
             margin-bottom: rem(63px);
@@ -52,7 +54,7 @@
 
         padding: rem(69px) rem(57px);
 
-        border-top: rem(1px) solid $color-dark-charcoal;
+        border-top: $border;
 
         .footer__block-title {
             margin-bottom: rem(29px);
@@ -189,7 +191,7 @@
             width: rem(452px);
             height: 100%;
 
-            border-right: rem(1px) solid $color-dark-charcoal;
+            border-right: $border;
         }
 
         &:nth-of-type(2) {

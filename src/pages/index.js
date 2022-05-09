@@ -5,7 +5,7 @@ import { withTranslation, getTranslation } from 'utils/translations/i18n';
 
 //import Button from 'components/Button';
 import Banner from 'components/Banner';
-import NavigationBar from 'components/NavigationBar';
+import Navigation from 'components/Navigation';
 import VideoPlayer from 'components/VideoPlayer';
 
 import SectionAbout from 'components/SectionAbout';
@@ -52,7 +52,7 @@ class Home extends Component {
 
                 <Banner />
                 {isDesktop && 
-                    <NavigationBar t={t}  />
+                    <Navigation t={t}  />
                 }
                 <VideoPlayer />
                 <SectionAbout t={t} />

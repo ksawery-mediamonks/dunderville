@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 
 import Button from 'components/Button';
 import Logo from 'components/Logo';
-import NavigationBar from 'components/NavigationBar';
+import Navigation from 'components/Navigation';
 
 import { Router } from 'next/router';
 
@@ -34,10 +34,8 @@ export default class Header extends Component {
     }
 
     render() {
-        const { t } = this.props;
-        const { router } = this.props;
-        const isDesktop = this.state.isDesktop;
-        const isHome = this.state.isHome;
+        const { t, router } = this.props;
+        const { isHome, isDesktop } = this.state;
 
         return (
             <header className={styles.header}>
@@ -74,7 +72,7 @@ export default class Header extends Component {
                     {isHome ? (
                     <span className={styles.header__title}>{t('header:copy.secondary')}</span>
                         ) : (
-                    <NavigationBar t={t} router={router}/>
+                    <Navigation t={t} router={router}/>
                     )}
                 </div>
             </header>
