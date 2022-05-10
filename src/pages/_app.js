@@ -17,6 +17,7 @@ import Head from 'next/head';
 
 import Header from 'components/Header';
 import Footer from 'components/Footer';
+import MenuOverlay from 'components/MenuOverlay';
 
 
 // export function reportWebVitals(props) {
@@ -25,12 +26,18 @@ import Footer from 'components/Footer';
 
 class Application extends React.Component {
 
+    state = {
+        overlayMenuVisible: false,
+        isNarrow: null
+    }
+
     componentDidMount() {
         new WatchForHover();
     }
 
     render() {
         const { Component, t, pageProps, router } = this.props;
+        const { overlayMenuVisible } = this.state;
 
         return (
             <>
@@ -61,7 +68,7 @@ class Application extends React.Component {
 
                 {/* <SafariCacheFix /> */}
 
-                <Header t={t} router={router.pathname}></Header>
+                <Header overlayMenuVisible={overlayMenuVisible} onButtonMenuClicked={this._handleButtonMenuClick} t={t} router={router.pathname}></Header>
 
                 <Transition fragment={router.pathname}>
                     <Component {...pageProps} />
@@ -69,12 +76,23 @@ class Application extends React.Component {
 
                 <Footer t={t} router={router.pathname}></Footer>
 
+                {overlayMenuVisible && 
+                    <MenuOverlay t={t} router={router.pathname} />
+                }
+
                 {/* <Analytics>
                     <GoogleGlobalSiteTag />
                     <CookieNotification t={t} />
                 </Analytics> */}
             </>
         );
+    }
+
+    //
+    _handleButtonMenuClick = (overlayMenuVisible) => {
+        this.setState({overlayMenuVisible: overlayMenuVisible}, () => {
+            console.log(this.state.overlayMenuVisible);
+        })
     }
 }
 

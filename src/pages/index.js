@@ -42,7 +42,7 @@ class Home extends Component {
 
     render() {
         const { t } = this.props;
-        const isDesktop = this.state.isDesktop;
+        const isWide = this.state.isWide;
 
         return (
             <div ref={this.el}>
@@ -51,7 +51,7 @@ class Home extends Component {
                 </Head>
 
                 <Banner />
-                {isDesktop && 
+                {isWide && 
                     <Navigation t={t}  />
                 }
                 <VideoPlayer />
@@ -85,7 +85,7 @@ class Home extends Component {
     }
 
     _detectWindowWidth() {
-        this.setState({ isDesktop: window.innerWidth > 1024 });
+        this.setState({ isWide: window.innerWidth > 1024 });
     }
 
     _updateBackgroundColor() {

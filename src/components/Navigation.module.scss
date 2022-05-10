@@ -20,14 +20,33 @@
     color: $color-dark-charcoal;
 }
 
-.navigation {
-    display: none;
-}
+// .navigation {
+//     display: none;
+// }
 
 .active {
     position: relative;
     display: inline-block;
 }
+
+//global active 
+.button {
+    &:global(.active) {
+        background-color: pink;
+    }
+}
+body {
+    .navigation {
+        display: none;
+    }
+    
+    &:global('has-hover') {
+        .navigation {
+            display: block;
+        }
+    }
+}
+
 
 .active::before {
     position: absolute;

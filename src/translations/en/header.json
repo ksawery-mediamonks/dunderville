@@ -22,28 +22,28 @@
         {
             "button": {
                 "item": "I.",
-                "copy": "I. Studio",
+                "copy": "Studio",
                 "href": "/studio"
             }
         },
         {
             "button": {
                 "item": "II.",
-                "copy": "II. The Work",
+                "copy": "The Work",
                 "href": "/the-work"
             }
         },
         {
             "button": {
                 "item": "III.",
-                "copy": "III. Process",
+                "copy": "Process",
                 "href": "/process"
             }
         },
         {
             "button": {
                 "item": "IV.",
-                "copy": "IV. Contact",
+                "copy": "Contact",
                 "href": "/contact"
             }
         }

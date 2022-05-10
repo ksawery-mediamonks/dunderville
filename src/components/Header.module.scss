@@ -8,9 +8,6 @@
 
 .item {
     @extend .list__item;
-    // display: inline-block;
-
-    // vertical-align: top;
 
     &:not(:last-child) {
         margin-right: rem(10px);
@@ -43,7 +40,6 @@
     background-color: transparent;
 
     align-items: center;
-    //justify-content: space-between;
 }
 
 .header__logo {
@@ -51,7 +47,6 @@
 
     width: rem(88px);
     height: rem(80px);
-    //margin-right: rem(41px) !important; //TODO WHY IT NEEDS IMPORTANT!
 
     margin-right: rem(41px);
 
@@ -99,9 +94,8 @@
 
     width: rem(88px);
     height: rem(80px);
-    //margin: 0 0 0 auto !important; //TODO WHY IT NEEDS IMPORTANT!
 
-    margin: 0 0 0 auto; //TODO WHY IT NEEDS IMPORTANT!
+    margin: 0 0 0 auto;
 
     &::before {
         position: absolute;
@@ -202,9 +196,6 @@
         position: absolute;
         right: 0;
         left: 0;
-        // margin-right: auto !important; //TODO WHY IT NEEDS IMPORTANT!
-        // margin-left: auto!important; //TODO WHY IT NEEDS IMPORTANT!
-        // background-color: $color-chinese-white !important; //TODO WHY IT NEEDS IMPORTANT!
 
         margin-right: auto;
         margin-left: auto;

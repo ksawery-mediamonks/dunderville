@@ -1,0 +1,60 @@
+// .button-menu {
+//     position: relative;
+
+//     width: rem(88px);
+//     height: rem(80px);
+//     //margin: 0 0 0 auto !important; //TODO WHY IT NEEDS IMPORTANT!
+
+//     margin: 0 0 0 auto; //TODO WHY IT NEEDS IMPORTANT!
+
+//     &::before {
+//         position: absolute;
+//         top: rem(5px);
+//         left: rem(4px);
+
+//         width: 100%;
+//         height: 100%;
+
+//         background-color: $color-black;
+
+//         content: '';
+//     }
+// }
+
+// .button-menu__block {
+//     position: relative;
+
+//     width: 100%;
+//     height: 100%;
+
+//     background-color: $color-dark-charcoal;
+// }
+
+// .button-menu__icon {
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+
+//     width: 100%;
+//     height: 100%;
+
+//     img {
+//         position: absolute;
+//         top: 0;
+//         right: 0;
+//         bottom: 0;
+//         left: 0;
+
+//         width: rem(29px);
+//         height: rem(20px);
+
+//         margin: auto;
+//     }
+// }
+
+
+// @include mq-wide {
+//     .button-menu {
+//         display: none;
+//     }
+// }

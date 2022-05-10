@@ -3,10 +3,12 @@ import styles from './Header.module.scss';
 import React, { Component } from 'react';
 
 import Button from 'components/Button';
+import ButtonMenu from 'components/ButtonMenu';
 import Logo from 'components/Logo';
 import Navigation from 'components/Navigation';
 
 import { Router } from 'next/router';
+import { isFunction } from 'utils/helpers';
 
 import { resizeManager } from '@superherocheesecake/next-resize-manager';
 
@@ -15,7 +17,7 @@ export default class Header extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          isDesktop: false,
+          isWide: false,
           isHome: false
         };
 
@@ -34,8 +36,9 @@ export default class Header extends Component {
     }
 
     render() {
-        const { t, router } = this.props;
-        const { isHome, isDesktop } = this.state;
+        const { t, router, overlayMenuVisible } = this.props;
+        const { isHome, isWide } = this.state;
+        //shownavigation = isNarrow ! false : router.path === '/' ? false : true
 
         return (
             <header className={styles.header}>
@@ -57,30 +60,20 @@ export default class Header extends Component {
                         />
                     </Button>
                     )}
-                    {isDesktop ? (
+                    {isWide ? (
                     <span className={styles.header__title}>{t('header:copy.main-wide')}</span>
                         ) : (
                     <span className={styles.header__title}>{t('header:copy.main')}</span>
                     )}
-                    <Button className={`${styles.ir} ${styles['button-menu']}`} onClick={this._handleMenuClick}>
-                        {t('header:menu.copy')}
-                        <div className={styles['button-menu__block']}></div>
-                        <div className={styles['button-menu__icon']}>
-                            <img src='/assets/img/burger.svg' />
-                        </div>
-                    </Button>
+                    <ButtonMenu overlayMenuVisible={overlayMenuVisible} t={t} onButtonMenuClicked={this._handleButtonMenuClick}/>
                     {isHome ? (
-                    <span className={styles.header__title}>{t('header:copy.secondary')}</span>
-                        ) : (
-                    <Navigation t={t} router={router}/>
+                        <span className={styles.header__title}>{t('header:copy.secondary')}</span>
+                    ) : (
+                        <Navigation t={t} router={router}/>
                     )}
                 </div>
             </header>
         );
-    }
-
-    _openMenuOverlay() {
-        console.log('open menu overlay');
     }
 
     _setupEventListers() {
@@ -104,7 +97,7 @@ export default class Header extends Component {
     }
 
     _detectWindowWidth() {
-        this.setState({ isDesktop: window.innerWidth > 1024 });
+        this.setState({ isWide: window.innerWidth > 1024 });
     }
 
     _detectRoutePath = () => {
@@ -112,9 +105,12 @@ export default class Header extends Component {
         this.setState({ isHome: false })
     }
 
-    _handleMenuClick = () => {
-        //call a private function
-        this._openMenuOverlay();
-    };
-}
+    _handleButtonMenuClick = (overlayMenuVisible) => {
+        const { onButtonMenuClicked } = this.props;
+
+        if (onButtonMenuClicked && isFunction(onButtonMenuClicked)) {
+            (overlayMenuVisible);
+        }
+    }
+ }
 

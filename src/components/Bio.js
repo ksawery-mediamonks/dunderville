@@ -18,12 +18,10 @@ export default class Bio extends Component {
         return this.gsap;
     }
     render() {
-        const { item } = this.props;
-        const { index } = this.props;
-        const { ref } = this.props;
+        const { item, index, ref } = this.props;
 
         return (
-            <div className={styles.bio} key={item.key}>
+            <div className={styles.bio} key={index}>
                 <h2 className={styles['bio__fullname']}>{item.fullname}</h2>
                 <h3 className={styles['bio__role']}>{item.role}</h3>
                 <div className={styles['bio__image-container']}>

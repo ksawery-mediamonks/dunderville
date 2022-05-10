@@ -1,0 +1,26 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    //background-color: $color-chinese-white;
+
+    background-color: $color-spanish-pink;;
+}
+
+.navigation {
+    display: block;
+
+    border: 1px solid red;
+}
+
+.navigation > ol {
+    display: flex;
+
+    flex-direction: column;
+}
