@@ -68,7 +68,12 @@ class Application extends React.Component {
 
                 {/* <SafariCacheFix /> */}
 
-                <Header overlayMenuVisible={overlayMenuVisible} onButtonMenuClicked={this._handleButtonMenuClick} t={t} router={router.pathname}></Header>
+                <Header 
+                    overlayMenuVisible={overlayMenuVisible} 
+                    onButtonMenuClicked={this._handleButtonMenuClick} 
+                    t={t} 
+                    router={router.pathname}>
+                </Header>
 
                 <Transition fragment={router.pathname}>
                     <Component {...pageProps} />
@@ -90,7 +95,7 @@ class Application extends React.Component {
 
     //
     _handleButtonMenuClick = (overlayMenuVisible) => {
-        this.setState({overlayMenuVisible: overlayMenuVisible}, () => {
+        this.setState({ overlayMenuVisible: overlayMenuVisible }, () => {
             console.log(this.state.overlayMenuVisible);
         })
     }

@@ -4,13 +4,17 @@
     margin: 0 0 rem(44px) rem(25px);
 }
 
-.banner__container {
+.container {
     height: 100%;
     overflow: hidden;
 
     svg {
         height: 100%;
     }
+}
+
+.hide {
+    display: none;
 }
 
 .overflow {

@@ -65,7 +65,11 @@ export default class Header extends Component {
                         ) : (
                     <span className={styles.header__title}>{t('header:copy.main')}</span>
                     )}
-                    <ButtonMenu overlayMenuVisible={overlayMenuVisible} t={t} onButtonMenuClicked={this._handleButtonMenuClick}/>
+                    <ButtonMenu 
+                        overlayMenuVisible={overlayMenuVisible} 
+                        onButtonMenuClicked={this._handleButtonMenuClick}
+                        t={t} 
+                    />
                     {isHome ? (
                         <span className={styles.header__title}>{t('header:copy.secondary')}</span>
                     ) : (
@@ -109,7 +113,7 @@ export default class Header extends Component {
         const { onButtonMenuClicked } = this.props;
 
         if (onButtonMenuClicked && isFunction(onButtonMenuClicked)) {
-            (overlayMenuVisible);
+            onButtonMenuClicked(overlayMenuVisible);
         }
     }
  }

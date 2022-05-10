@@ -12,10 +12,6 @@ export default class ButtonMenu extends Component {
         this.ui = {
             icon: createRef()
         };
-
-        this.state = {
-          isOpen: false,
-        };
     }
 
     render() {
