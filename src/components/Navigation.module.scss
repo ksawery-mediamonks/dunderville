@@ -35,10 +35,11 @@
         background-color: pink;
     }
 }
+
 body {
-    .navigation {
-        display: none;
-    }
+    // .navigation {
+    //     display: none;
+    // }
     
     &:global('has-hover') {
         .navigation {

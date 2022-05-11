@@ -7,10 +7,12 @@
 .container {
     height: 100%;
     overflow: hidden;
+}
 
-    svg {
-        height: 100%;
-    }
+.svg {
+    height: 100%;
+
+    fill: $color-dark-charcoal;
 }
 
 .hide {

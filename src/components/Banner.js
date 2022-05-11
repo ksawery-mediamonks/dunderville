@@ -32,6 +32,8 @@ export default class Banner extends Component {
 
     componentDidMount() {
         this._setupEventListener();
+
+        this._onloadAnimation();
     }
 
     componentWillUnmount() {
@@ -42,13 +44,12 @@ export default class Banner extends Component {
         return (
             <div className={styles.banner}>
                 <div className={styles.container}>
-                <svg ref={this.ui.banner} className={styles.svg} viewBox="0 0 283.1 35.9" fill='#303030'>
+                <svg ref={this.ui.banner} className={styles.svg} viewBox="0 0 283.1 35.9">
                         <defs>
                             <clipPath id="clipPath">
-                            <rect x="142" y="0" width="30" height="40" fill='red'/>
+                                <rect x="142" y="0" width="30" height="40" />
                             </clipPath>
                         </defs>
-
                         {/* E */}
                         <polygon ref={this.svg.letterE} points="283.1,30.3 283.1,35.6 261.2,35.6 261.2,0.1 283.1,0.1 283.1,5.1 266.1,5.1 266.1,11.3 278.8,11.3   278.8,16.2 266.1,16.2 266.1,30.3 "></polygon>
                         <rect x="261.2" y="30.3" width="22.5" height="6"></rect>
@@ -90,7 +91,6 @@ export default class Banner extends Component {
 
     _setupEventListener() {
         //window.addEventListener('load', this._handleOnloadAnimation);
-        this._onloadAnimation();
     }
 
     _removeEventListener() {
@@ -102,7 +102,10 @@ export default class Banner extends Component {
     };
 
     _animateBanner() {
-        const timeline = gsap.timeline();
+        const timelineBanner = gsap.timeline();
+        const timelineLetters = gsap.timeline( { delay: 0.16 } );
+
+        const banner = this.ui.banner.current;
 
         const letterU1 = this.svg.letterU1.current;
         const letterU2 = this.svg.letterU2.current;
@@ -117,24 +120,28 @@ export default class Banner extends Component {
         const letterL = this.svg.letterL.current;
         const letterE = this.svg.letterE.current;
 
-        letterU1.style.transform = "translateY(-8px)";
-        letterU2.style.transform = "translateY(29px)";
-        letterN1.style.transform = "translateY(-7px)";
-        letterN2.style.transform = "translateY(32px)";
-        letterD.style.transform = "translateY(100%)";
-        letterEline.style.transform = "translateY(-4px)";
-        letterR.style.transform = "translateX(-30px)";
-        letterV.style.transform = "rotate(18deg)";
-        letterV.style.transformOrigin = "60% 25%";
-        letterI1.style.transform = "translateY(5px)";
-        letterI2.style.transform = "translateY(-33px)";
-        letterL.style.transform = "translateX(-17.5px)";
-        letterE.style.transform = "translateY(12px)";
+        timelineBanner.from(banner, { y: "10", duration: 0.16, ease: "power3.inOut" });
 
-        console.log(letterU1)
+        timelineLetters.fromTo(letterU1, { y: "-8" }, { y: "-100%", duration: 0.54, ease: "power3.inOut" });
+        timelineLetters.fromTo(letterU2, { y: "29" }, { y: "0", duration: 0.54, ease: "power3.inOut"}, "-=0.54");
 
-        timeline.to(
-            this.svg.letterU1.current, { y: 10, ease: "power4.out", duration: 1 }, 0
-        );
+        timelineLetters.fromTo(letterEline, { y: "-4" }, { y: "10", duration: 0.36, ease: "power1.inOut"}, 0);
+        timelineLetters.fromTo(letterEline, { y: "10" }, { y: "0", duration: 0.4, ease: "back.out" });
+
+        timelineLetters.fromTo(letterD, { y: "110%" }, { y: "0", duration: 0.54, ease: "back.out(1.7)"}, 0);
+
+        timelineLetters.fromTo(letterR, { x: "-30" }, { x: "0", duration: 0.6, ease: "power3.inOut"}, 0.13);
+
+        timelineLetters.fromTo(letterV, {transformOrigin: "18% 35%", rotate: 23}, { rotate: "0", duration: 0.16, ease: "power3.inOut"});
+
+        timelineLetters.fromTo(letterE, {y: "12"}, { y: "0", duration: 0.4, ease: "power3.inOut"}, 0.54);
+
+        timelineLetters.fromTo(letterI1, { y: "-8" }, { y: "-100%", duration: 1, ease: "power3.out"}, 0);
+        timelineLetters.fromTo(letterI2, { y: "43" }, { y: "0", duration: 1, ease: "power3.out"}, 0);
+
+        timelineLetters.fromTo(letterL, { x: "-17.5" }, { x: "0", duration: 0.83, ease: "power3.inOut"}, 0.13);
+
+        timelineLetters.fromTo(letterN1, { y: "-7" }, { y: "0", duration: 0.16, ease: "power1.in"}, 1.48);
+        timelineLetters.fromTo(letterN2, { y: "32" }, { y: "100%", duration: 0.16, ease: "power1.in"}, 1.48);
     }
 }
