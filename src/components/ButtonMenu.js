@@ -23,12 +23,18 @@ export default class ButtonMenu extends Component {
                 {t('header:menu.copy')}
                 <div className={styles['button-menu__block']}></div>
                 <div className={styles['button-menu__icon']}>
-                {overlayMenuVisible && (
+
+                {overlayMenuVisible ? (
+                    <img className={styles.close} ref={this.ui.icon} src='/assets/img/burger-close.svg' />
+                        ) : (
+                    <img className={styles.open} ref={this.ui.icon} src='/assets/img/burger.svg' />
+                )}
+                {/* {overlayMenuVisible && (
                     <img ref={this.ui.icon} src='/assets/img/burger-close.svg' />
                 )}
                 {!overlayMenuVisible && (
                     <img ref={this.ui.icon} src='/assets/img/burger.svg' />
-                )}
+                )} */}
                 </div>
             </Button>
         );
@@ -36,7 +42,8 @@ export default class ButtonMenu extends Component {
 
     _handleMenuClick = () => {
         const { onButtonMenuClicked, overlayMenuVisible } = this.props;
-        console.log(!overlayMenuVisible)
+        console.log("inital:", overlayMenuVisible);
+        console.log("toggled:", !overlayMenuVisible);
 
         if (onButtonMenuClicked && isFunction(onButtonMenuClicked)) {
             onButtonMenuClicked(!overlayMenuVisible);

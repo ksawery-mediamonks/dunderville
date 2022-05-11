@@ -12,7 +12,15 @@ import { isFunction } from 'utils/helpers';
 
 import { resizeManager } from '@superherocheesecake/next-resize-manager';
 
+import classNames from 'classnames';
+
 export default class Header extends Component {
+
+    getClassNames() {
+        const { className } = this.props;
+
+        return classNames('header', styles[className], className)
+    }
 
     constructor(props) {
         super(props);
@@ -41,38 +49,44 @@ export default class Header extends Component {
         //shownavigation = isNarrow ! false : router.path === '/' ? false : true
 
         return (
-            <header className={styles.header}>
-                <div className={styles.header__container}>
+            // <header className={overlayMenuVisible ? `${styles['is-open']} ${styles['header']}`: styles['header']}>
+            <header className={classNames(styles.header, overlayMenuVisible ? 'is-open' : '')}>
+                <div className={styles.container}>
                     {isHome ? (
-                    <div className={styles.header__logo}>
+                    <div className={styles.logo}>
                         <Logo 
-                            className={styles['header__logo-icon']} 
+                            className={styles['logo-icon']}
                             src={t('header:logo.src-narrow')} 
                             alt={t('header:logo.alt')} 
                         />
                     </div>
                         ) : (
-                    <Button href="/" className={`${styles.ir} ${styles.header__logo}`}>
+                    <Button href="/" className={`${styles.ir} ${styles.logo}`}>
                         <Logo 
-                            className={styles['header__logo-icon']} 
+                            className={styles['logo-icon']} 
                             src={t('header:logo.src-narrow')} 
                             alt={t('header:logo.alt')} 
                         />
                     </Button>
                     )}
-                    {isWide ? (
-                    <span className={styles.header__title}>{t('header:copy.main-wide')}</span>
-                        ) : (
-                    <span className={styles.header__title}>{t('header:copy.main')}</span>
+                    {isWide && (
+                        <span className={styles.title}>{t('header:copy.main-wide')}</span>
+                    )}
+                    {!isWide && !overlayMenuVisible && (
+                        <span className={styles.title}>{t('header:copy.main')}</span>
+                    )}
+                    {overlayMenuVisible && (
+                        <span className={styles.title}>{t('header:copy.secondary')}</span>
                     )}
                     <ButtonMenu 
                         overlayMenuVisible={overlayMenuVisible} 
                         onButtonMenuClicked={this._handleButtonMenuClick}
                         t={t} 
                     />
-                    {isHome ? (
-                        <span className={styles.header__title}>{t('header:copy.secondary')}</span>
-                    ) : (
+                    {isHome && (
+                        <span className={styles.title}>{t('header:copy.secondary')}</span>
+                    )}
+                    {!isHome && isWide && (
                         <Navigation t={t} router={router}/>
                     )}
                 </div>
@@ -111,6 +125,8 @@ export default class Header extends Component {
 
     _handleButtonMenuClick = (overlayMenuVisible) => {
         const { onButtonMenuClicked } = this.props;
+
+        console.log(classNames);
 
         if (onButtonMenuClicked && isFunction(onButtonMenuClicked)) {
             onButtonMenuClicked(overlayMenuVisible);

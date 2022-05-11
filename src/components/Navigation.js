@@ -8,19 +8,17 @@ import { toRoman } from 'utils/NumberToRoman';
 
 export default class Navigation extends Component {
 
-    getClassNames() {
-        const { className } = this.props;
-
-        return classNames('navigation', styles[className], className)
-    }
-
     render() {
-        const { t } = this.props;
-        const { router } = this.props;
+        const { t, overlayMenuVisible, router, inverted } = this.props;
+
+
+        //state class - modifier
 
         return (
             <nav className={styles.navigation}>
-                <ol className={styles.list}>
+                {/* <ul className={classNames(styles.list, inverted ? 'is-inverted' : '')} ref={this.el}> */}
+                <ol className={classNames(styles.list, inverted ? 'is-inverted' : '')} ref={this.el}>
+                {/* <ol className={styles.list}> */}
                     {t('header:navigation', { returnObjects: true }).map((item, index) => {
                         return (
                             <li className={styles.item} key={index} >

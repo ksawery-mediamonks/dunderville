@@ -122,7 +122,7 @@ export default class Banner extends Component {
 
         timelineBanner.from(banner, { y: "10", duration: 0.16, ease: "power3.inOut" });
 
-        timelineLetters.fromTo(letterU1, { y: "-8" }, { y: "-100%", duration: 0.54, ease: "power3.inOut" });
+        timelineLetters.fromTo(letterU1, { y: "-8" }, { y: "-101%", duration: 0.54, ease: "power3.inOut" });
         timelineLetters.fromTo(letterU2, { y: "29" }, { y: "0", duration: 0.54, ease: "power3.inOut"}, "-=0.54");
 
         timelineLetters.fromTo(letterEline, { y: "-4" }, { y: "10", duration: 0.36, ease: "power1.inOut"}, 0);

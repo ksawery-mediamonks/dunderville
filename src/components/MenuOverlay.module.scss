@@ -8,19 +8,12 @@
     height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
-    //background-color: $color-chinese-white;
 
-    background-color: $color-spanish-pink;;
+    background-color: $color-spanish-pink;
+
+    color: $color-spanish-pink;;
 }
 
-.navigation {
-    display: block;
-
-    border: 1px solid red;
-}
-
-.navigation > ol {
-    display: flex;
-
-    flex-direction: column;
+.wrapper {
+    padding-top: $header-spacing;
 }

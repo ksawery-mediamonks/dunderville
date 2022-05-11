@@ -4,6 +4,11 @@
 
 .list {
     @extend .list--horizontal;
+
+
+    &:global(.is-inverted) {
+        border: 1px solid red;
+    }
 }
 
 .item {
@@ -29,24 +34,18 @@
     display: inline-block;
 }
 
-//global active 
-.button {
-    &:global(.active) {
-        background-color: pink;
+:global(.has-hover) {
+    .navigation {
+        display: flex;
     }
 }
 
-body {
-    // .navigation {
-    //     display: none;
-    // }
-    
-    &:global('has-hover') {
-        .navigation {
-            display: block;
-        }
+:global(.is-open) {
+    .navigation {
+        border: 1px solid red;
     }
 }
+
 
 
 .active::before {
@@ -67,8 +66,6 @@ body {
 
 @include mq-wide {
     .navigation {
-        display: flex;
-
         font-family: $font-plaak;
         font-size: rem(12px);
 

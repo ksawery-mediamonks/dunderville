@@ -82,7 +82,7 @@ class Application extends React.Component {
                 <Footer t={t} router={router.pathname}></Footer>
 
                 {overlayMenuVisible && 
-                    <MenuOverlay t={t} router={router.pathname} />
+                    <MenuOverlay t={t} router={router.pathname} overlayMenuVisible={overlayMenuVisible} />
                 }
 
                 {/* <Analytics>
@@ -96,7 +96,7 @@ class Application extends React.Component {
     //
     _handleButtonMenuClick = (overlayMenuVisible) => {
         this.setState({ overlayMenuVisible: overlayMenuVisible }, () => {
-            console.log(this.state.overlayMenuVisible);
+            console.log(overlayMenuVisible);
         })
     }
 }
