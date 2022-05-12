@@ -11,6 +11,7 @@ import { Router } from 'next/router';
 import { isFunction } from 'utils/helpers';
 
 import { resizeManager } from '@superherocheesecake/next-resize-manager';
+import { isMediaQueryWide } from 'utils/DeviceUtil';
 
 import classNames from 'classnames';
 
@@ -25,16 +26,15 @@ export default class Header extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          isWide: false,
-          isHome: false
+          isHome: false,
+          isMediaQueryWide: isMediaQueryWide()
         };
-
-        this.detectWindowWidth = this._detectWindowWidth.bind(this);
     }
     
     componentDidMount() {
         this._setupEventListers();
         this._resize();
+        this._setMediaQueryWide();
 
         this._detectRoutePath();
     }
@@ -45,11 +45,10 @@ export default class Header extends Component {
 
     render() {
         const { t, router, overlayMenuVisible } = this.props;
-        const { isHome, isWide } = this.state;
+        const { isHome, isMediaQueryWide } = this.state;
         //shownavigation = isNarrow ! false : router.path === '/' ? false : true
 
         return (
-            // <header className={overlayMenuVisible ? `${styles['is-open']} ${styles['header']}`: styles['header']}>
             <header className={classNames(styles.header, overlayMenuVisible ? 'is-open' : '')}>
                 <div className={styles.container}>
                     {isHome ? (
@@ -69,10 +68,10 @@ export default class Header extends Component {
                         />
                     </Button>
                     )}
-                    {isWide && (
+                    {isMediaQueryWide && (
                         <span className={styles.title}>{t('header:copy.main-wide')}</span>
                     )}
-                    {!isWide && !overlayMenuVisible && (
+                    {!isMediaQueryWide && !overlayMenuVisible && (
                         <span className={styles.title}>{t('header:copy.main')}</span>
                     )}
                     {overlayMenuVisible && (
@@ -86,12 +85,20 @@ export default class Header extends Component {
                     {isHome && (
                         <span className={styles.title}>{t('header:copy.secondary')}</span>
                     )}
-                    {!isHome && isWide && (
+                    {!isHome && isMediaQueryWide && (
                         <Navigation t={t} router={router}/>
                     )}
                 </div>
             </header>
         );
+    }
+
+    _setMediaQueryWide() {
+        const boolean = isMediaQueryWide();
+
+        if (this.state.isMediaQueryWide !== boolean) {
+            this.setState({ isMediaQueryWide: boolean });
+        }
     }
 
     _setupEventListers() {
@@ -107,15 +114,11 @@ export default class Header extends Component {
     }
     
     _resize() {
-        this._detectWindowWidth();
+        this._setMediaQueryWide();
     }
 
     _resizeHandler = () => {
         this._resize();
-    }
-
-    _detectWindowWidth() {
-        this.setState({ isWide: window.innerWidth > 1024 });
     }
 
     _detectRoutePath = () => {

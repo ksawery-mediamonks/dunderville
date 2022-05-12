@@ -3,6 +3,8 @@ import 'styles/main.scss';
 import { withTranslationApp } from 'utils/translations/i18n';
 import WatchForHover from 'utils/WatchForHover';
 // import Analytics from 'components/analytics/Analytics';
+import { resizeManager } from '@superherocheesecake/next-resize-manager';
+import { isMediaQueryWide } from 'utils/DeviceUtil';
 
 import Transition from '@superherocheesecake/next-transition';
 
@@ -30,12 +32,16 @@ class Application extends React.Component {
 
     state = {
         overlayMenuVisible: false,
-        isNarrow: null
+        isNarrow: null,
+        isMediaQueryWide: isMediaQueryWide() || null
     }
+    
 
     componentDidMount() {
         this._setupEventListers();
-
+        this._resize();
+        this._setMediaQueryWide();
+        
         new WatchForHover();
     }
 
@@ -45,7 +51,7 @@ class Application extends React.Component {
 
     render() {
         const { Component, t, pageProps, router } = this.props;
-        const { overlayMenuVisible } = this.state;
+        const { overlayMenuVisible, isMediaQueryWide } = this.state;
 
         return (
             <>
@@ -83,14 +89,19 @@ class Application extends React.Component {
                     router={router.pathname}>
                 </Header>
 
+                { !isMediaQueryWide && overlayMenuVisible &&
+                    <span>xxxxxxx</span>
+                }
+
+                
                 <Transition fragment={router.pathname}>
                     <Component {...pageProps} />
                 </Transition>
 
                 <Footer t={t} router={router.pathname}></Footer>
 
-                {overlayMenuVisible && 
-                    <MenuOverlay t={t} router={router.pathname} overlayMenuVisible={overlayMenuVisible} />
+                {overlayMenuVisible &&
+                    <MenuOverlay t={t} router={router.pathname} />
                 }
 
                 {/* <Analytics>
@@ -101,18 +112,41 @@ class Application extends React.Component {
         );
     }
 
+    _setMediaQueryWide() {
+        const boolean = isMediaQueryWide();
+
+        if (this.state.isMediaQueryWide !== boolean) {
+            this.setState({ isMediaQueryWide: boolean });
+        }
+    }
+
     _setupEventListers() {
+        resizeManager.addEventListener('resize', this._resizeHandler);
+        resizeManager.addEventListener('resize:complete', this._resizeHandler);
+
         Router.events.on("routeChangeStart", this._handleRouteChange);
     }
 
     _removeEventListers() {
+        resizeManager.removeEventListener('resize', this._resizeHandler);
+        resizeManager.removeEventListener('resize:complete', this._resizeHandler);
+
         Router.events.off("routeChangeStart", this._handleRouteChange);
+    }
+
+    _resize() {
+        this._setMediaQueryWide();
+        console.log(this.state.isMediaQueryWide);
+    }
+
+    _resizeHandler = () => {
+        this._resize();
     }
 
     _handleRouteChange = () => {
         setTimeout(() => {
             this.setState({overlayMenuVisible: false});
-          }, "500")
+          }, "800")
     }
 
     //
