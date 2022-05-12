@@ -13,6 +13,10 @@
     height: 100%;
 
     fill: $color-dark-charcoal;
+
+    &:global(.is-inverted) {
+        fill: $color-chinese-white;
+    }
 }
 
 .hide {

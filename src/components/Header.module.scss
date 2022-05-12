@@ -29,24 +29,27 @@
     z-index: 2;
 
     padding: rem(44px) rem(25px) rem(46px) rem(25px);
-}
 
-.is-open {
-    .container {
-        border: none;
-    }
 
-    .logo {
-        display: none;
-    }
+    &:global(.is-open) {
+        color: $color-chinese-white;
 
-    .title {
-        position: absolute;
-        left: 50%;
+        .container {
+            border: none;
+        }
 
-        width: fit-content;
+        .logo {
+            display: none;
+        }
 
-        transform: translate(-50%, 0);
+        .title {
+            position: absolute;
+            left: 50%;
+
+            width: fit-content;
+
+            transform: translate(-50%, 0);
+        }
     }
 }
 

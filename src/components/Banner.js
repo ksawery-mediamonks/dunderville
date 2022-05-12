@@ -3,7 +3,7 @@ import { gsap } from "gsap";
 //import { DrawSVGPlugin } from 'gsap/dist/DrawSVGPlugin';
 
 import styles from './Banner.module.scss';
-
+import classNames from 'classnames';
 export default class Banner extends Component {
     constructor(props) {
         super(props);
@@ -41,10 +41,14 @@ export default class Banner extends Component {
     }
 
     render() {
+        const { inverted } = this.props;
+
         return (
             <div className={styles.banner}>
                 <div className={styles.container}>
-                <svg ref={this.ui.banner} className={styles.svg} viewBox="0 0 283.1 35.9">
+                {/* <ol className={classNames(styles.list, inverted ? 'is-inverted' : '')} ref={this.el}> */}
+                {/* <svg className={styles.svg} viewBox="0 0 283.1 35.9" ref={this.ui.banner}> */}
+                <svg className={classNames(styles.svg, inverted ? 'is-inverted' : '')} viewBox="0 0 283.1 35.9" ref={this.ui.banner}>
                         <defs>
                             <clipPath id="clipPath">
                                 <rect x="142" y="0" width="30" height="40" />

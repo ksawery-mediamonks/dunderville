@@ -5,9 +5,55 @@
 .list {
     @extend .list--horizontal;
 
-
     &:global(.is-inverted) {
-        border: 1px solid red;
+        display: flex;
+
+        flex-direction: column;
+
+        overflow: hidden;
+    }
+
+    &:global(.is-inverted) .item {
+        margin: 0;
+
+        border-bottom: rem(1px) solid $color-chinese-white;
+    }
+
+    &:global(.is-inverted) .item:first-of-type {
+        border-top: rem(1px) solid $color-chinese-white;
+    }
+
+    &:global(.is-inverted) .item .button {
+        position: relative;
+        display: flex;
+
+        width: 100%;
+        height: rem(235px);
+
+        background-color: $color-dark-charcoal;
+
+        text-align: center;
+
+        justify-content: center;
+        align-items: center;
+    }
+
+    &:global(.is-inverted) .item .label {
+        font-family: $font-plaak-bold;
+        font-size: rem(66px);
+
+        color: $color-chinese-white;
+    }
+
+    &:global(.is-inverted) .item .order {
+        position: absolute;
+        top: rem(58px);
+        left: rem(52px);
+
+        font-family: $font-plaak;
+        font-size: rem(26px);
+
+        color: $color-spanish-pink;
     }
 }
 
@@ -19,7 +65,13 @@
     }
 }
 
-.link {
+.order {
+    text-decoration: none;
+
+    color: $color-dark-charcoal;
+}
+
+.label {
     text-decoration: none;
 
     color: $color-dark-charcoal;
@@ -34,19 +86,17 @@
     display: inline-block;
 }
 
-:global(.has-hover) {
-    .navigation {
-        display: flex;
-    }
-}
+// :global(.has-hover) {
+//     .navigation {
+//         display: flex;
+//     }
+// }
 
-:global(.is-open) {
-    .navigation {
-        border: 1px solid red;
-    }
-}
-
-
+// :global(.is-open) {
+//     .navigation {
+//         border: 1px solid red;
+//     }
+// }
 
 .active::before {
     position: absolute;
@@ -66,6 +116,8 @@
 
 @include mq-wide {
     .navigation {
+        display: flex;
+
         font-family: $font-plaak;
         font-size: rem(12px);
 
