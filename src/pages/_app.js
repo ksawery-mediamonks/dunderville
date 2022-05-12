@@ -9,6 +9,8 @@ import Transition from '@superherocheesecake/next-transition';
 import React from 'react';
 import Head from 'next/head';
 
+import { Router } from 'next/router';
+
 // import SafariCacheFix from 'components/performance/SafariCacheFix';
 // import { report } from 'components/performance/WebVitals';
 
@@ -32,7 +34,13 @@ class Application extends React.Component {
     }
 
     componentDidMount() {
+        this._setupEventListers();
+
         new WatchForHover();
+    }
+
+    componentWillUnmount() {
+        this._removeEventListers();
     }
 
     render() {
@@ -93,10 +101,24 @@ class Application extends React.Component {
         );
     }
 
+    _setupEventListers() {
+        Router.events.on("routeChangeStart", this._handleRouteChange);
+    }
+
+    _removeEventListers() {
+        Router.events.off("routeChangeStart", this._handleRouteChange);
+    }
+
+    _handleRouteChange = () => {
+        setTimeout(() => {
+            this.setState({overlayMenuVisible: false});
+          }, "500")
+    }
+
     //
     _handleButtonMenuClick = (overlayMenuVisible) => {
         this.setState({ overlayMenuVisible: overlayMenuVisible }, () => {
-            console.log(overlayMenuVisible);
+            //console.log(overlayMenuVisible);
         })
     }
 }

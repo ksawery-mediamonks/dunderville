@@ -126,8 +126,6 @@ export default class Header extends Component {
     _handleButtonMenuClick = (overlayMenuVisible) => {
         const { onButtonMenuClicked } = this.props;
 
-        console.log(classNames);
-
         if (onButtonMenuClicked && isFunction(onButtonMenuClicked)) {
             onButtonMenuClicked(overlayMenuVisible);
         }

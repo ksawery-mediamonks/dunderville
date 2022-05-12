@@ -42,8 +42,8 @@ export default class ButtonMenu extends Component {
 
     _handleMenuClick = () => {
         const { onButtonMenuClicked, overlayMenuVisible } = this.props;
-        console.log("inital:", overlayMenuVisible);
-        console.log("toggled:", !overlayMenuVisible);
+        // console.log("inital:", overlayMenuVisible);
+        // console.log("toggled:", !overlayMenuVisible);
 
         if (onButtonMenuClicked && isFunction(onButtonMenuClicked)) {
             onButtonMenuClicked(!overlayMenuVisible);
