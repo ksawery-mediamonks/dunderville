@@ -7,14 +7,13 @@ import Banner from 'components/Banner';
 
 export default class MenuOverlay extends Component {
     render() {
-        const { t } = this.props;
+        const { t, router } = this.props;
         
-
         return (
             <div className={styles.overlay}>
                 <div className={styles.wrapper}>
                     <Banner inverted />
-                    <Navigation inverted t={t} />
+                    <Navigation inverted t={t} router={router} />
                 </div>
             </div>
         );

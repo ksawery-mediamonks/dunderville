@@ -1,6 +1,6 @@
 import React, { Component, createRef } from 'react';
 import { gsap } from "gsap";
-//import { DrawSVGPlugin } from 'gsap/dist/DrawSVGPlugin';
+import { GSDevTools } from 'gsap/dist/GSDevTools';
 
 import styles from './Banner.module.scss';
 import classNames from 'classnames';
@@ -27,7 +27,7 @@ export default class Banner extends Component {
             letterE: createRef(),
         };
     
-        //gsap.registerPlugin(DrawSVGPlugin);
+        gsap.registerPlugin(GSDevTools);
     }
 
     componentDidMount() {
@@ -147,5 +147,9 @@ export default class Banner extends Component {
 
         timelineLetters.fromTo(letterN1, { y: "-7" }, { y: "0", duration: 0.16, ease: "power1.in"}, 1.48);
         timelineLetters.fromTo(letterN2, { y: "32" }, { y: "100%", duration: 0.16, ease: "power1.in"}, 1.48);
+    
+        //GSDevTools.create();
     }
+
+
 }

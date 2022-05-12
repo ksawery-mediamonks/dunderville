@@ -18,7 +18,7 @@ export default class Navigation extends Component {
                     {t('header:navigation', { returnObjects: true }).map((item, index) => {
                         return (
                             <li className={styles.item} key={index} >
-                                <Button className={classNames(styles.button, router === item.button.href ? styles['active'] : null)} href={item.button.href} onClick={this._handleMenuClick}>
+                                <Button className={classNames(styles.button, router === item.button.href ? 'is-active' : '')} href={item.button.href} >
                                     <span className={styles.order}>{toRoman(index + 1)}.</span>
                                     <span className={styles.label}>{item.button.copy}</span>
                                 </Button>
@@ -28,11 +28,5 @@ export default class Navigation extends Component {
                 </ol>
             </nav>
         );
-    }
-
-
-    _handleMenuClick() {
-        //
-        console.log('')
     }
 }

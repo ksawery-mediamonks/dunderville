@@ -38,6 +38,43 @@
         align-items: center;
     }
 
+    &:global(.is-inverted) {
+        .button {
+            &:global(.is-active) {
+                background-color: $color-spanish-pink;
+            }
+
+            &:global(.is-active)::before {
+                display: none;
+            }
+
+            &:global(.is-active) .label,
+            &:global(.is-active) .order {
+                color: $color-dark-charcoal;
+            }
+
+            &:global(.is-active) .label::before {
+                position: absolute;
+                top: 0;
+                right: rem(-5px);
+                bottom: 0;
+                left: rem(-5px);
+
+                height: rem(8px);
+
+                margin: auto 0;
+
+                background-color: $color-dark-charcoal;
+
+                content: '';
+            }
+        }
+    }
+
+    &:global(.is-inverted) .label {
+        position: relative;
+    }
+
     &:global(.is-inverted) .item .label {
         font-family: $font-plaak-bold;
         font-size: rem(66px);
@@ -77,41 +114,27 @@
     color: $color-dark-charcoal;
 }
 
-// .navigation {
-//     display: none;
-// }
+.button {
+    &:global(.is-active) {
+        position: relative;
+        display: inline-block;
+    }
 
-.active {
-    position: relative;
-    display: inline-block;
-}
+    &:global(.is-active)::before {
+        position: absolute;
+        top: 0;
+        right: rem(-5px);
+        bottom: 0;
+        left: rem(-5px);
 
-// :global(.has-hover) {
-//     .navigation {
-//         display: flex;
-//     }
-// }
+        height: rem(2px);
 
-// :global(.is-open) {
-//     .navigation {
-//         border: 1px solid red;
-//     }
-// }
+        margin: auto 0;
 
-.active::before {
-    position: absolute;
-    top: 0;
-    right: rem(-5px);
-    bottom: 0;
-    left: rem(-5px);
+        background-color: $color-dark-charcoal;
 
-    height: rem(2px);
-
-    margin: auto 0;
-
-    background-color: $color-dark-charcoal;
-
-    content: '';
+        content: '';
+    }
 }
 
 @include mq-wide {
