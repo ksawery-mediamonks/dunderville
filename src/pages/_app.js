@@ -136,7 +136,7 @@ class Application extends React.Component {
 
     _resize() {
         this._setMediaQueryWide();
-        console.log(this.state.isMediaQueryWide);
+        this.setState({ overlayMenuVisible: false });
     }
 
     _resizeHandler = () => {
