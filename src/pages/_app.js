@@ -29,13 +29,11 @@ import MenuOverlay from 'components/MenuOverlay';
 // }
 
 class Application extends React.Component {
-
     state = {
         overlayMenuVisible: false,
         isNarrow: null,
         isMediaQueryWide: isMediaQueryWide() || null
     }
-    
 
     componentDidMount() {
         this._setupEventListers();
@@ -89,10 +87,9 @@ class Application extends React.Component {
                     router={router.pathname}>
                 </Header>
 
-                { !isMediaQueryWide && overlayMenuVisible &&
+                {/* { !isMediaQueryWide && overlayMenuVisible &&
                     <span>xxxxxxx</span>
-                }
-
+                } */}
                 
                 <Transition fragment={router.pathname}>
                     <Component {...pageProps} />
@@ -149,7 +146,6 @@ class Application extends React.Component {
           }, "800")
     }
 
-    //
     _handleButtonMenuClick = (overlayMenuVisible) => {
         this.setState({ overlayMenuVisible: overlayMenuVisible }, () => {
             //console.log(overlayMenuVisible);

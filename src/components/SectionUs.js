@@ -46,7 +46,9 @@ export default class SectionUs extends Component {
                                 <h3 className={styles['bio__role']}>{item.role}</h3>
                                 <div className={styles['bio__image-container']}>
                                     <img className={styles['bio__image']} src={item.img} alt={item.imgalt}></img>
-                                    <Button onClick={this._handleButtonRevertClick} ref={this.components.buttons[index]} className={styles['bio__button']}>
+                                    
+                                </div>
+                                <Button onClick={this._handleButtonRevertClick} ref={this.components.buttons[index]} className={styles['bio__button']}>
                                         <svg className={styles['bio__button-text']} viewBox="0 0 106.14 106.13">
                                             <text transform="rotate(-126.15 30.4834 35.7603)">
                                             <tspan x="0" y="0">H</tspan>
@@ -78,7 +80,6 @@ export default class SectionUs extends Component {
                                             <path d="M1.000,0.800 L0.443,33.709 L6.950,34.774 L6.600,52.601 L19.200,26.001 L10.800,26.001 L17.800,7.800 L1.000,0.800 Z"></path>
                                         </svg>
                                     </Button>
-                                </div>
                                 <p className={styles['bio__description']}>{item.description}</p>
                             </div>
                         );
