@@ -46,7 +46,7 @@ export default class MenuOverlay extends Component {
         const banner = this.ui.banner.current;
 
         timelineOverlay.fromTo(overlay, { y: "-100%" }, { y: "0", duration: 1, ease: "power3.inOut" });
-        timelineOverlay.fromTo(banner, { opacity: 0, autoAlpha: 0 }, { opacity: 1, autoAlpha: 1, duration: 1, ease: "power3.inOut" });
+        timelineOverlay.fromTo(banner, { autoAlpha: 0 }, { autoAlpha: 1, duration: 1, ease: "power3.inOut" });
     };
 
     _unmountAnimation = () => {

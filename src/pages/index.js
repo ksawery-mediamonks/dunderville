@@ -11,6 +11,7 @@ import VideoPlayer from 'components/VideoPlayer';
 import SectionAbout from 'components/SectionAbout';
 import SectionShowcase from 'components/SectionShowcase';
 import SectionInfo from 'components/SectionInfo';
+import Marquee from 'components/Marquee';
 
 import { resizeManager } from '@superherocheesecake/next-resize-manager';
 
@@ -54,6 +55,7 @@ class Home extends Component {
                 {isWide && 
                     <Navigation t={t}  />
                 }
+                <Marquee />
                 <VideoPlayer />
                 <SectionAbout t={t} />
                 <SectionShowcase t={t} />
