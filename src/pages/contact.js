@@ -3,8 +3,10 @@ import React, { Component, createRef } from 'react';
 import { withTranslation, getTranslation } from 'utils/translations/i18n';
 
 import Heading from 'components/Heading';
-import SpriteSheet from 'components/SpriteSheet';
 import Marquee from 'components/Marquee';
+
+import styles from './contact.module.scss';
+
 
 class Contact extends Component {
     el = createRef();
@@ -13,10 +15,9 @@ class Contact extends Component {
         const { t } = this.props;
 
         return (
-            <div ref={this.el}>
+            <div ref={this.el} className={styles.contact}>
                 <Heading title={t('contact:heading')} />
                 <Marquee />
-                <SpriteSheet />
             </div>
         );
     }
