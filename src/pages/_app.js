@@ -33,7 +33,7 @@ class Application extends React.Component {
     state = {
         overlayMenuVisible: false,
         isNarrow: null,
-        isMediaQueryWide: isMediaQueryWide() || null,
+        isMediaQueryWide: isMediaQueryWide(),
         isPreloaderCompleted: false
     }
 

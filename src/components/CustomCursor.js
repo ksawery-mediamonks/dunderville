@@ -17,11 +17,23 @@ export default class CustomCursor extends Component {
         y: 0
     };
 
-    _tweenObject = {
+    _tweenCursorOuter = {
         startRadius: 0,
-        radius: 30,
-        lineWidth: 4,
+        radius: 20,
+        lineWidth: 2,
+        strokeStyle: '#303030',
+        positionX: -30,
+        positionY: -30,
+        startAngle: 0,
+        endAngle: 2 * Math.PI
+    };
+
+    _tweenCursorInner = {
+        startRadius: 0,
+        radius: 5,
+        lineWidth: 2,
         strokeStyle: '#f8bebe',
+        fillStyle: '#f8bebe',
         positionX: -30,
         positionY: -30,
         startAngle: 0,
@@ -74,13 +86,15 @@ export default class CustomCursor extends Component {
             y: e.clientY,
         };
 
-
         // this._tweenObject.positionX = this._mousePosition.x;
         // this._tweenObject.positionY = this._mousePosition.y;
 
-        const timeline = gsap.timeline({ ease: "power3.in" });
-        timeline.to(
-            this._tweenObject, { positionX: this._mousePosition.x, positionY: this._mousePosition.y, duration: 0.6 }
+        const tlCursor = gsap.timeline({ ease: "power3.in" });
+        tlCursor.to(
+            this._tweenCursorInner, { positionX: this._mousePosition.x, positionY: this._mousePosition.y, duration: 0.4 }
+        );
+        tlCursor.to(
+            this._tweenCursorOuter, { positionX: this._mousePosition.x, positionY: this._mousePosition.y, duration: 0.6 }, 0
         );
 
         gsap.ticker.add(this._handleTick);
@@ -102,16 +116,30 @@ export default class CustomCursor extends Component {
         this._context = this._canvas.getContext('2d');
     }
 
-    _draw() {
-        const { lineWidth, strokeStyle, radius, positionX, positionY, startAngle, endAngle } = this._tweenObject;
-
-        this._context.clearRect(0, 0, this._width, this._height);
+    _drawOuterCircle() {
+        const { lineWidth, strokeStyle, radius, positionX, positionY, startAngle, endAngle } = this._tweenCursorOuter;
         this._context.beginPath();
         this._context.arc(positionX, positionY, radius, startAngle, endAngle);
         this._context.lineWidth = lineWidth;
         this._context.strokeStyle = strokeStyle;
         this._context.stroke();
         this._context.closePath();
+    }
+
+    _drawInnerCircle() {
+        const { lineWidth, radius, positionX, positionY, startAngle, endAngle, fillStyle } = this._tweenCursorInner;
+        this._context.beginPath();
+        this._context.arc(positionX, positionY, radius, startAngle, endAngle);
+        this._context.lineWidth = lineWidth;
+        this._context.fillStyle = fillStyle;
+        this._context.fill();
+        this._context.closePath();
+    }
+
+    _draw() {
+        this._context.clearRect(0, 0, this._width, this._height);
+        this._drawOuterCircle();
+        this._drawInnerCircle();
     }
 
     _mouseMoveHandler = (e) => {
