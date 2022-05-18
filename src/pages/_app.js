@@ -23,6 +23,7 @@ import Header from 'components/Header';
 import Footer from 'components/Footer';
 import MenuOverlay from 'components/MenuOverlay';
 import Preloader from 'components/Preloader';
+import CustomCursor from 'components/CustomCursor';
 
 // export function reportWebVitals(props) {
 //     report(props);
@@ -50,7 +51,7 @@ class Application extends React.Component {
 
     render() {
         const { Component, t, pageProps, router } = this.props;
-        const { overlayMenuVisible, isPreloaderCompleted } = this.state;
+        const { overlayMenuVisible, isPreloaderCompleted, isMediaQueryWide } = this.state;
 
         return (
             <>
@@ -95,8 +96,12 @@ class Application extends React.Component {
                         </Transition>
                         
                         <Footer t={t} router={router.pathname}></Footer>
+                        { isMediaQueryWide && 
+                            <CustomCursor />
+                        }
                     </>
                 }
+
 
                 { !isPreloaderCompleted && 
                     <Preloader 
@@ -156,9 +161,6 @@ class Application extends React.Component {
 
     _handleButtonMenuClick = (overlayMenuVisible) => {
         this.setState({ overlayMenuVisible: overlayMenuVisible });
-        // this.setState({ overlayMenuVisible: overlayMenuVisible }, () => {
-        //     //console.log(overlayMenuVisible);
-        // })
     }
 
     _handlePreloaderCompleted = () => {

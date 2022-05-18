@@ -48,9 +48,7 @@ export default class Preloader extends Component {
     render() {
         return (
             <div className={styles.container}>
-                <span ref={this.ui.percentage} className={styles.percentage}>
-                    0%
-                </span>
+                <span ref={this.ui.percentage} className={styles.percentage}></span>
                 <div ref={this.ui.wrapper} className={styles.wrapper}>
                     <canvas ref={this.el} className={styles.canvas}></canvas>
                 </div>
@@ -131,7 +129,6 @@ export default class Preloader extends Component {
         this._queue.addEventListener('progress', this._handleQueueProgressChange);
 
         this._queue.load();
-
     }
 
     _removeQueue() {

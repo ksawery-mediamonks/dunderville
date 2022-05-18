@@ -123,13 +123,13 @@ const FRAMES_DATA = [
     [1501, 1256, 426, 499, 3, -784, -219],
     [1, 1, 255, 499, 4, -954, -219]
 ];
-const SPRITES = [
-    '/assets/img/spritesheet/spritesheet-0.png',
-    '/assets/img/spritesheet/spritesheet-1.png',
-    '/assets/img/spritesheet/spritesheet-2.png',
-    '/assets/img/spritesheet/spritesheet-3.png',
-    '/assets/img/spritesheet/spritesheet-4.png'
-];
+// const SPRITES = [
+//     '/assets/img/spritesheet/spritesheet-0.png',
+//     '/assets/img/spritesheet/spritesheet-1.png',
+//     '/assets/img/spritesheet/spritesheet-2.png',
+//     '/assets/img/spritesheet/spritesheet-3.png',
+//     '/assets/img/spritesheet/spritesheet-4.png'
+// ];
 
 const FPS_INTERVAL = 1000 / 30;
 

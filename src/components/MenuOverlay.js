@@ -42,19 +42,16 @@ export default class MenuOverlay extends Component {
 
     _mountAnimation = () => {
         const timelineOverlay = gsap.timeline();
-        const overlay = this.ui.overlay.current;
-        const banner = this.ui.banner.current;
 
-        timelineOverlay.fromTo(overlay, { y: "-100%" }, { y: "0", duration: 1, ease: "power3.inOut" });
-        timelineOverlay.fromTo(banner, { autoAlpha: 0 }, { autoAlpha: 1, duration: 1, ease: "power3.inOut" });
+        timelineOverlay.fromTo(this.ui.overlay.current, { y: "-100%" }, { y: "0", duration: 1, ease: "power3.inOut" });
+        timelineOverlay.fromTo(this.ui.banner.current, { autoAlpha: 0 }, { autoAlpha: 1, duration: 1, ease: "power3.inOut" });
     };
 
     _unmountAnimation = () => {
         console.log('unmount animation')
         const timelineOverlay = gsap.timeline();
-        const overlay = this.ui.overlay.current;
 
-        timelineOverlay.fromTo(overlay, { y: "-100%" }, { y: "0", duration: 2, ease: "power3.inOut" });
+        timelineOverlay.fromTo(this.ui.overlay.current, { y: "-100%" }, { y: "0", duration: 2, ease: "power3.inOut" });
     };
 }
 

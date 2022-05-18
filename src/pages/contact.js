@@ -4,6 +4,7 @@ import { withTranslation, getTranslation } from 'utils/translations/i18n';
 
 import Heading from 'components/Heading';
 import Marquee from 'components/Marquee';
+// import Spritesheet from 'components/Spritesheet';
 
 import styles from './contact.module.scss';
 
@@ -18,6 +19,7 @@ class Contact extends Component {
             <div ref={this.el} className={styles.contact}>
                 <Heading title={t('contact:heading')} />
                 <Marquee />
+                {/* <Spritesheet /> */}
             </div>
         );
     }

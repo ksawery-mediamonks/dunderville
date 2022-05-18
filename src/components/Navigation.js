@@ -49,7 +49,7 @@ export default class Navigation extends Component {
         );
     }
 
-    _mountAnimation = () => {
+    _mountAnimation() {
         const timelineOverlay = gsap.timeline();
         const links = this.components.links.map((item) => item.current);
 
@@ -58,7 +58,7 @@ export default class Navigation extends Component {
         }
     };
 
-    _unmountAnimation = () => {
+    _unmountAnimation() {
         console.log("unmount")
     };
 }
