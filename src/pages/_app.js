@@ -22,6 +22,7 @@ import { Router } from 'next/router';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 import MenuOverlay from 'components/MenuOverlay';
+import Preloader from 'components/Preloader';
 
 
 // export function reportWebVitals(props) {
@@ -32,7 +33,8 @@ class Application extends React.Component {
     state = {
         overlayMenuVisible: false,
         isNarrow: null,
-        isMediaQueryWide: isMediaQueryWide() || null
+        isMediaQueryWide: isMediaQueryWide() || null,
+        isPreloaderCompleted: false
     }
 
     componentDidMount() {
@@ -49,7 +51,7 @@ class Application extends React.Component {
 
     render() {
         const { Component, t, pageProps, router } = this.props;
-        const { overlayMenuVisible, isMediaQueryWide } = this.state;
+        const { overlayMenuVisible, isPreloaderCompleted } = this.state;
 
         return (
             <>
@@ -79,23 +81,30 @@ class Application extends React.Component {
                 </Head>
 
                 {/* <SafariCacheFix /> */}
-
-                <Header 
-                    overlayMenuVisible={overlayMenuVisible} 
-                    onButtonMenuClicked={this._handleButtonMenuClick} 
-                    t={t} 
-                    router={router.pathname}>
-                </Header>
-
-                {/* { !isMediaQueryWide && overlayMenuVisible &&
-                    <span>xxxxxxx</span>
-                } */}
                 
-                <Transition fragment={router.pathname}>
-                    <Component {...pageProps} />
-                </Transition>
+                { isPreloaderCompleted &&
+                    <> 
+                        <Header 
+                            overlayMenuVisible={overlayMenuVisible} 
+                            onButtonMenuClicked={this._handleButtonMenuClick} 
+                            t={t} 
+                            router={router.pathname}>
+                        </Header>
+                    
+                        <Transition fragment={router.pathname}>
+                            <Component {...pageProps} />
+                        </Transition>
+                        
+                        <Footer t={t} router={router.pathname}></Footer>
+                    </>
+                }
 
-                <Footer t={t} router={router.pathname}></Footer>
+                { !isPreloaderCompleted && 
+                    <Preloader 
+                        isPreloaderCompleted={isPreloaderCompleted}
+                        onPreloaderCompleted={this._handlePreloaderCompleted} 
+                    />
+                }
 
                 {overlayMenuVisible &&
                     <MenuOverlay t={t} router={router.pathname} />
@@ -147,9 +156,14 @@ class Application extends React.Component {
     }
 
     _handleButtonMenuClick = (overlayMenuVisible) => {
-        this.setState({ overlayMenuVisible: overlayMenuVisible }, () => {
-            //console.log(overlayMenuVisible);
-        })
+        this.setState({ overlayMenuVisible: overlayMenuVisible });
+        // this.setState({ overlayMenuVisible: overlayMenuVisible }, () => {
+        //     //console.log(overlayMenuVisible);
+        // })
+    }
+
+    _handlePreloaderCompleted = () => {
+        this.setState({isPreloaderCompleted: true});
     }
 }
 

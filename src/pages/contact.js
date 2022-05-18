@@ -1,7 +1,10 @@
 // import Head from 'next/head';
 import React, { Component, createRef } from 'react';
 import { withTranslation, getTranslation } from 'utils/translations/i18n';
+
 import Heading from 'components/Heading';
+import SpriteSheet from 'components/SpriteSheet';
+import Marquee from 'components/Marquee';
 
 class Contact extends Component {
     el = createRef();
@@ -14,6 +17,8 @@ class Contact extends Component {
             <Heading 
                 title={t('contact:heading')}
             />
+            <Marquee />
+            <SpriteSheet />
             </div>
         );
     }

@@ -26,6 +26,8 @@
     "@superherocheesecake/adaptive": "1.2.2",
     "@superherocheesecake/cookie": "3.0.5",
     "@superherocheesecake/event-dispatcher": "1.1.4",
+    "@superherocheesecake/loader": "1.1.6",
+    "@superherocheesecake/loaders-image-xhr-loader": "2.0.1",
     "@superherocheesecake/next-resize-manager": "2.0.1",
     "@superherocheesecake/next-transition": "1.0.5",
     "classnames": "2.3.1",

@@ -33,7 +33,7 @@ export default class Marquee extends Component {
             <div ref={this.ui.marquee} className={styles.marquee}>
                 <div ref={this.ui.line} className={classNames(styles.line)}>
                     <span ref={this.ui.label} className={classNames(styles.label)}>
-                    Hello!&nbsp;
+                        SAY IT!&nbsp;
                     </span>
                 </div>
             </div>
@@ -70,7 +70,7 @@ export default class Marquee extends Component {
         this.ui.line.current.style.width = `${lineWidth}px`;
         this._clone.style.width = `${lineWidth}px`;
 
-        this._startInfinite(lineWidth, multiplier);
+        //this._startInfinite(lineWidth, multiplier);
     }
 
     _startInfinite(width, multiplier) {
@@ -86,9 +86,6 @@ export default class Marquee extends Component {
         const origin = this.ui.line.current;
 
         console.log("clone: ", this._clone, "origin: ", origin);
-
-
-
         console.log("timeClone: ", timeClone / 2);
 
         //left to right

@@ -1,9 +1,8 @@
 .marquee {
     position: relative;
 
-    margin: 0;
+    margin: 0 0 25rem;
 }
-
 
 
 .line {
@@ -23,10 +22,13 @@
 
     pointer-events: none;
 
+    font-family: 'Plaak-CondensedBold';
     font-size: rem(94px);
     line-height: 1em;
 
-    color: orangered;
+    color: $color-dark-charcoal;
+
+    mix-blend-mode: difference;
 }
 
 @include mq-regular {
