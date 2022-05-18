@@ -11,6 +11,7 @@ import VideoPlayer from 'components/VideoPlayer';
 import SectionAbout from 'components/SectionAbout';
 import SectionShowcase from 'components/SectionShowcase';
 import SectionInfo from 'components/SectionInfo';
+import SpriteSheet from 'components/SpriteSheet';
 
 import { resizeManager } from '@superherocheesecake/next-resize-manager';
 
@@ -49,6 +50,8 @@ class Home extends Component {
                 <Head>
                     <title>{t('home:meta__title')}</title>
                 </Head>
+
+                <SpriteSheet />
 
                 <Banner />
                 {isWide && 

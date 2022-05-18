@@ -24,7 +24,6 @@ import Footer from 'components/Footer';
 import MenuOverlay from 'components/MenuOverlay';
 import Preloader from 'components/Preloader';
 
-
 // export function reportWebVitals(props) {
 //     report(props);
 // }

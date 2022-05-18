@@ -1,5 +1,7 @@
 import React, { Component, createRef } from 'react';
 import gsap from 'gsap';
+import { loader } from '@superherocheesecake/loader';
+
 
 import styles from './Spritesheet.module.scss';
 
@@ -128,7 +130,10 @@ const SPRITES = [
     '/assets/img/spritesheet/spritesheet-3.png',
     '/assets/img/spritesheet/spritesheet-4.png'
 ];
+
 const FPS_INTERVAL = 1000 / 30;
+
+const loaderSprites = loader.resources._resources;
 
 export default class Spritesheet extends Component {
     el = createRef();
@@ -145,6 +150,10 @@ export default class Spritesheet extends Component {
     componentDidMount() {
         this._setupCanvas();
         this._loadImages();
+
+        // console.log(loader.get('image-1').source);
+        // console.log("sprites:", loader.resources._resources[0].source);
+        // console.log("SPRITES:", SPRITES);
     }
 
     componentWillUnmount() {
@@ -166,19 +175,32 @@ export default class Spritesheet extends Component {
 
     _loadImages() {
         let imageCount = 0;
-
-        SPRITES.forEach((src) => {
+        for (let i = 0; i < loaderSprites.length; i++) {
             const image = new Image();
-            image.src = src;
+            image.src = loaderSprites[i].source;
             image.onload = () => {
                 imageCount++;
 
-                if (imageCount === SPRITES.length) {
+                if (imageCount === loaderSprites.length) {
+                    //ticker updates the globalTimeline on every requestAnimationFrame event
                     gsap.ticker.add(this._handleTick);
                 }
+                this._images.push(image);
             };
-            this._images.push(image);
-        });
+        }
+        // SPRITES.forEach((src) => {
+        //     const image = new Image();
+        //     image.src = src;
+        //     image.onload = () => {
+        //         imageCount++;
+
+        //         if (imageCount === SPRITES.length) {
+        //             //ticker updates the globalTimeline on every requestAnimationFrame event
+        //             gsap.ticker.add(this._handleTick);
+        //         }
+        //     };
+        //     this._images.push(image);
+        // });
     }
 
     _removeEventListeners() {

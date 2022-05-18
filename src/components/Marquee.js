@@ -73,7 +73,7 @@ export default class Marquee extends Component {
         //this._startInfinite(lineWidth, multiplier);
     }
 
-    _startInfinite(width, multiplier) {
+    _startInfinite(width) {
         if (this._infiniteTl) {
             this._infiniteTl.kill();
             this._infiniteTl === null;

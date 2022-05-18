@@ -14,11 +14,9 @@ class Contact extends Component {
 
         return (
             <div ref={this.el}>
-            <Heading 
-                title={t('contact:heading')}
-            />
-            <Marquee />
-            <SpriteSheet />
+                <Heading title={t('contact:heading')} />
+                <Marquee />
+                <SpriteSheet />
             </div>
         );
     }
