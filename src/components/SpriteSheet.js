@@ -133,7 +133,7 @@ const FRAMES_DATA = [
 
 const FPS_INTERVAL = 1000 / 30;
 
-const loaderSprites = loader.resources._resources;
+//const loaderSprites = [];
 
 export default class Spritesheet extends Component {
     el = createRef();
@@ -174,33 +174,27 @@ export default class Spritesheet extends Component {
     }
 
     _loadImages() {
+        this._loaderSpriteImages = [
+            loader.get('image-1'), 
+            loader.get('image-2'), 
+            loader.get('image-3'), 
+            loader.get('image-4'), 
+            loader.get('image-5')
+        ];
+
         let imageCount = 0;
-        for (let i = 0; i < loaderSprites.length; i++) {
+        for (let i = 0; i < this._loaderSpriteImages.length; i++) {
             const image = new Image();
-            image.src = loaderSprites[i].source;
-            image.onload = () => {
-                imageCount++;
+            image.src = this._loaderSpriteImages[i].source;
+            imageCount++;
 
-                if (imageCount === loaderSprites.length) {
-                    //ticker updates the globalTimeline on every requestAnimationFrame event
-                    gsap.ticker.add(this._handleTick);
-                }
-                this._images.push(image);
-            };
+            if (imageCount === this._loaderSpriteImages.length) {
+                //ticker updates the globalTimeline on every requestAnimationFrame event
+                gsap.ticker.add(this._handleTick);
+            }
+            // the image is added to the array outside the loop so that it can be accessed later in the ticker
+            this._images.push(image);
         }
-        // SPRITES.forEach((src) => {
-        //     const image = new Image();
-        //     image.src = src;
-        //     image.onload = () => {
-        //         imageCount++;
-
-        //         if (imageCount === SPRITES.length) {
-        //             //ticker updates the globalTimeline on every requestAnimationFrame event
-        //             gsap.ticker.add(this._handleTick);
-        //         }
-        //     };
-        //     this._images.push(image);
-        // });
     }
 
     _removeEventListeners() {

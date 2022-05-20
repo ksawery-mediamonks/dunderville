@@ -19,21 +19,23 @@ export default class CustomCursor extends Component {
 
     _tweenCursorOuter = {
         startRadius: 0,
-        radius: 20,
+        radius: 8,
         lineWidth: 2,
-        strokeStyle: '#303030',
+        strokeStyle: '#f8bebe',
+        fillStyle: '#f8bebe',
         positionX: -30,
         positionY: -30,
         startAngle: 0,
-        endAngle: 2 * Math.PI
+        endAngle: 2 * Math.PI,
+        spikes: 30
     };
 
     _tweenCursorInner = {
         startRadius: 0,
-        radius: 5,
+        radius: 4,
         lineWidth: 2,
         strokeStyle: '#f8bebe',
-        fillStyle: '#f8bebe',
+        fillStyle: '#303030',
         positionX: -30,
         positionY: -30,
         startAngle: 0,
@@ -96,12 +98,15 @@ export default class CustomCursor extends Component {
         tlCursor.to(
             this._tweenCursorOuter, { positionX: this._mousePosition.x, positionY: this._mousePosition.y, duration: 0.6 }, 0
         );
+        // tlCursor.fromTo(
+        //     this._tweenCursorOuter, {rotation: 0}, {rotation: "+=2" }, 0
+        // );
 
         gsap.ticker.add(this._handleTick);
     }
 
-    _tick() {
-        this._draw();
+    _tick(e) {
+        this._draw(e);
     }
 
     _setSize() {
@@ -116,14 +121,32 @@ export default class CustomCursor extends Component {
         this._context = this._canvas.getContext('2d');
     }
 
-    _drawOuterCircle() {
-        const { lineWidth, strokeStyle, radius, positionX, positionY, startAngle, endAngle } = this._tweenCursorOuter;
+    _drawOuterCircle(counter) {
+        const { lineWidth, strokeStyle, radius, positionX, positionY, startAngle, endAngle, spikes, fillStyle } = this._tweenCursorOuter;
+        // this._context.beginPath();
+        // this._context.arc(positionX, positionY, radius, startAngle, endAngle);
+        // this._context.lineWidth = lineWidth;
+        // this._context.strokeStyle = strokeStyle;
+        // this._context.stroke();
+        // this._context.closePath();
+        //console.log(Math.floor(e));
+
+        const rotation = counter;
+        this._context.save();
         this._context.beginPath();
-        this._context.arc(positionX, positionY, radius, startAngle, endAngle);
-        this._context.lineWidth = lineWidth;
-        this._context.strokeStyle = strokeStyle;
-        this._context.stroke();
+        this._context.translate(positionX, positionY);
+        this._context.rotate(rotation);
+        this._context.moveTo(0,0 - radius);
+        for (var i = 0; i < spikes; i++) {
+            this._context.rotate(Math.PI / spikes);
+            this._context.lineTo(0, 0 - (radius * 4));
+            this._context.rotate(Math.PI / spikes);
+            this._context.lineTo(0, 0 - radius);
+        }
         this._context.closePath();
+        this._context.fillStyle = fillStyle;
+        this._context.fill();
+        this._context.restore();
     }
 
     _drawInnerCircle() {
@@ -136,9 +159,9 @@ export default class CustomCursor extends Component {
         this._context.closePath();
     }
 
-    _draw() {
+    _draw(e) {
         this._context.clearRect(0, 0, this._width, this._height);
-        this._drawOuterCircle();
+        this._drawOuterCircle(e);
         this._drawInnerCircle();
     }
 
@@ -150,7 +173,7 @@ export default class CustomCursor extends Component {
         this._resize();
     };
 
-    _handleTick = () => {
-        this._tick();
+    _handleTick = (e) => {
+        this._tick(e);
     };
 }

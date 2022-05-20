@@ -24,7 +24,7 @@ export default class Button extends Component {
 
         if (href && target === '_blank') {
             return (
-                <a ref={this.ui.button} className={this.getClassNames()} href={href} target={target} onClick={this._handleClick} {...otherProps}>
+                <a ref={this.ui.button} className={this.getClassNames()} href={href} target={target} onClick={this._handleClick} onMouseOver={this._handleMouseOver} onMouseLeave={this._handleMouseLeave} {...otherProps}>
                     {children}
                 </a>
             );
@@ -33,7 +33,7 @@ export default class Button extends Component {
         if (href && target !== '_blank') {
             return (
                 <Link href={href}>
-                    <a ref={this.ui.button} className={this.getClassNames()} onClick={this._handleClick}>
+                    <a ref={this.ui.button} className={this.getClassNames()} onClick={this._handleClick} onMouseOver={this._handleMouseOver} onMouseLeave={this._handleMouseLeave}>
                         {children}
                     </a>
                 </Link>
@@ -41,7 +41,7 @@ export default class Button extends Component {
         }
 
         return (
-            <button ref={this.ui.button} className={this.getClassNames()} onClick={this._handleClick}>
+            <button ref={this.ui.button} className={this.getClassNames()} onClick={this._handleClick} onMouseOver={this._handleMouseOver} onMouseLeave={this._handleMouseLeave}>
                 {children}
             </button>
         );
@@ -52,6 +52,21 @@ export default class Button extends Component {
         const { onClick } = this.props;
         if (isFunction(onClick)) {
             onClick(e);
+        }
+    };
+
+    //only call a function
+    _handleMouseOver = (e) => {
+        const { onMouseOver } = this.props;
+        if (isFunction(onMouseOver)) {
+            onMouseOver(e);
+        }
+    };
+
+    _handleMouseLeave = (e) => {
+        const { onMouseLeave } = this.props;
+        if (isFunction(onMouseLeave)) {
+            onMouseLeave(e);
         }
     };
 }

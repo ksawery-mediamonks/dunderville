@@ -107,19 +107,16 @@ export default class SectionUs extends Component {
         timeline.fromTo(this.ui.section.current, {backgroundColor: "#303030"}, {backgroundColor: "#e6e2dd", repeat: 3, ease: "power1", duration: 0.2, opacity: 1, onComplete: this._removeState}, 0);
 
         for (let i = 0; i < buttons.length; i++) {
-            console.log(buttons[i]);
             timeline.fromTo(buttons[i].children[0], {fill: "#f8bebe"}, {fill: "#303030", ease: "none", duration: 0.2}, 0.4);
             timeline.fromTo(buttons[i].children[1], {backgroundColor: "#303030"}, {backgroundColor: "#e6e2dd", ease: "power1", duration: 0.2}, 0.4);
             timeline.fromTo(buttons[i].children[2], {fill: "#e6e2dd"}, {fill: "#303030", ease: "power1", duration: 0.2}, 0.6);
 
             timeline.fromTo(buttons[i].children[1], {backgroundColor: "#303030"}, {backgroundColor: "#f8bebe", ease: "power1", duration: 0.2}, 0.4);
-
         }
     }
 
     _removeState = () => {
         this.ui.section.current.classList.remove("is-inverted");
-        
     }
 
     _animateButton = () => {

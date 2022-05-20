@@ -19,7 +19,7 @@ class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          isDesktop: false
+            isWide: false
         };
 
         this.detectWindowWidth = this._detectWindowWidth.bind(this);
@@ -53,7 +53,7 @@ class Home extends Component {
 
                 {/* <SpriteSheet /> */}
 
-                <Banner />
+                <Banner isWide={isWide}/>
                 {isWide && 
                     <Navigation t={t}  />
                 }
@@ -83,10 +83,6 @@ class Home extends Component {
         this._detectWindowWidth();
     }
 
-    _resizeHandler = () => {
-        this._resize();
-    }
-
     _detectWindowWidth() {
         this.setState({ isWide: window.innerWidth > 1024 });
     }
@@ -103,6 +99,10 @@ class Home extends Component {
 
         // console.log(this._mousePosition);
         // console.log(e);
+    }
+
+    _resizeHandler = () => {
+        this._resize();
     }
 
     _handleCtaClick = () => {

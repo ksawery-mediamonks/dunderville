@@ -15,11 +15,12 @@ export default class SectionShowcase extends Component {
     }
 
     componentDidMount() {
-        this._setupEventListener();
+        this._setupEventListeners();
+        this._setupTlButtonOverlay();
     }
 
     componentWillUnmount() {
-        this._removeEventListener();
+        this._removeEventListeners();
     }
 
     render() {
@@ -56,32 +57,27 @@ export default class SectionShowcase extends Component {
         );
     }
 
-    _setupEventListener() {
+    _setupEventListeners() {
         this.ui.button.current.addEventListener('mouseenter', this._startOverlayAnimation);
         this.ui.button.current.addEventListener('mouseleave', this._endOverlayAnimation);
     }
 
-    _removeEventListener() {
+    _removeEventListeners() {
         this.ui.button.current.removeEventListener('mouseenter', this._startOverlayAnimation);
         this.ui.button.current.removeEventListener('mouseleave', this._endOverlayAnimation);
     }
 
-    _startOverlayAnimation = () => {
-        const overlay = this.ui.overlay.current;
-        const timeline = gsap.timeline();
+    _setupTlButtonOverlay() {
+        this.ButtonOverlay = gsap.timeline({ paused: true });
+        this.ButtonOverlay.to(this.ui.overlay.current, { y: "-100%", duration: 0.5, ease: "power3.inOut" });
+    }
 
-        timeline.fromTo(
-            overlay, { y: 0}, { y: "-100%", duration: 0.4, ease: "power1.out" }
-        );
+    _startOverlayAnimation = () => {
+        this.ButtonOverlay.play();
     };
 
     _endOverlayAnimation = () => {
-        const overlay = this.ui.overlay.current;
-        const timeline = gsap.timeline();
-
-        timeline.fromTo(
-            overlay, { y: "-100%"}, { y: 0, duration: 0.4, ease: "power1.out" }
-        );
+        this.ButtonOverlay.reverse();
     };
 }
 

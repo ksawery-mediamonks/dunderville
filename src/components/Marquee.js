@@ -9,7 +9,6 @@ import { isFunction } from 'utils/helpers'
 import styles from './Marquee.module.scss';
 
 export default class Marquee extends Component {
-    el = createRef();
     ui = {
         marquee: createRef(),
         line: createRef(),
@@ -43,7 +42,6 @@ export default class Marquee extends Component {
     _setupEventListeners() {
         resizeManager.addEventListener('resize', this._resizeHandler);
         resizeManager.addEventListener('resize:complete', this._resizeHandler);
-        
     }
     
     _removeEventListeners() {
@@ -84,9 +82,6 @@ export default class Marquee extends Component {
         const timeClone = (width + resizeManager.viewportWidth) / r;
         const timeViewport = resizeManager.viewportWidth / r;
         const origin = this.ui.line.current;
-
-        console.log("clone: ", this._clone, "origin: ", origin);
-        console.log("timeClone: ", timeClone / 2);
 
         //left to right
         this._infiniteTl = gsap.timeline({ repeat: -1 });

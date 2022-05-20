@@ -162,7 +162,7 @@ export default class Preloader extends Component {
                 // Hide preloader
                 // Start application
                 if (onPreloaderCompleted && isFunction(onPreloaderCompleted)) {
-                    onPreloaderCompleted();
+                   onPreloaderCompleted();
                 }
                 break;
             }
