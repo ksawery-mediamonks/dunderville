@@ -4,6 +4,6 @@
 
     "form__name": "Name",
     "form__email": "Email",
-    "form__phone": "Phone",
-    "form__message": "Message"
+    "form__message": "What’s on your mind",
+    "form__submit": "Submit"
 }

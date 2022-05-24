@@ -1,0 +1,18 @@
+@import 'styles/partials/lists';
+@import 'styles/partials/buttons';
+
+.carousel {
+    position: relative;
+
+    width: 100%;
+
+    padding: 0 rem(25px);
+}
+
+.list {
+    @extend .list;
+}
+
+.item {
+    border-bottom: 1px solid black;
+}

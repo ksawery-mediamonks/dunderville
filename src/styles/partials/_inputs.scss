@@ -1,0 +1,22 @@
+.input {
+    width: 100%;
+
+    padding: rem(36px);
+
+    border: 1px solid $color-dark-charcoal;
+
+    background-color: $color-chinese-white;
+
+    font-family: $font-mono-light;
+}
+
+.input:focus {
+    border: 1px solid $color-spanish-pink;
+    outline: none;
+}
+
+.input:focus:hover {
+    border: 1px solid $color-spanish-pink;
+    border-radius: 0;
+    outline: none;
+}

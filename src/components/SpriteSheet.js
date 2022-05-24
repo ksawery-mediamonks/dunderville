@@ -142,18 +142,21 @@ export default class Spritesheet extends Component {
         index: 0
     };
 
-    _images = [];
+    _images = [
+        loader.get('image-1').result, 
+        loader.get('image-2').result, 
+        loader.get('image-3').result, 
+        loader.get('image-4').result, 
+        loader.get('image-5').result
+    ];
+
     _now = Date.now();
     _then = Date.now();
     _elapsed = null;
 
     componentDidMount() {
         this._setupCanvas();
-        this._loadImages();
-
-        // console.log(loader.get('image-1').source);
-        // console.log("sprites:", loader.resources._resources[0].source);
-        // console.log("SPRITES:", SPRITES);
+        this._setupEventListeners();
     }
 
     componentWillUnmount() {
@@ -173,28 +176,8 @@ export default class Spritesheet extends Component {
         this._context = this._canvas.getContext('2d');
     }
 
-    _loadImages() {
-        this._loaderSpriteImages = [
-            loader.get('image-1'), 
-            loader.get('image-2'), 
-            loader.get('image-3'), 
-            loader.get('image-4'), 
-            loader.get('image-5')
-        ];
-
-        let imageCount = 0;
-        for (let i = 0; i < this._loaderSpriteImages.length; i++) {
-            const image = new Image();
-            image.src = this._loaderSpriteImages[i].source;
-            imageCount++;
-
-            if (imageCount === this._loaderSpriteImages.length) {
-                //ticker updates the globalTimeline on every requestAnimationFrame event
-                gsap.ticker.add(this._handleTick);
-            }
-            // the image is added to the array outside the loop so that it can be accessed later in the ticker
-            this._images.push(image);
-        }
+    _setupEventListeners() {
+        gsap.ticker.add(this._handleTick);
     }
 
     _removeEventListeners() {

@@ -27,7 +27,7 @@ export default class CustomCursor extends Component {
         positionY: -30,
         startAngle: 0,
         endAngle: 2 * Math.PI,
-        spikes: 30
+        spikes: 34
     };
 
     _tweenCursorInner = {
@@ -43,14 +43,15 @@ export default class CustomCursor extends Component {
     };
 
     componentDidMount() {
-        this._setupEventListeners();
         this._setupCanvas();
+        this._setupEventListeners();
 
         this._resize();
     }
 
     componentWillUnmount() {
         this._removeEventListeners();
+        this._killTimelines();
     }
 
     render() {
@@ -66,6 +67,8 @@ export default class CustomCursor extends Component {
         resizeManager.addEventListener('resize:complete', this._resizeHandler);
 
         window.addEventListener('mousemove', this._mouseMoveHandler);
+
+        gsap.ticker.add(this._handleTick);
     }
 
     _removeEventListeners() {
@@ -87,22 +90,10 @@ export default class CustomCursor extends Component {
             x: e.clientX,
             y: e.clientY,
         };
-
-        // this._tweenObject.positionX = this._mousePosition.x;
-        // this._tweenObject.positionY = this._mousePosition.y;
-
-        const tlCursor = gsap.timeline({ ease: "power3.in" });
-        tlCursor.to(
-            this._tweenCursorInner, { positionX: this._mousePosition.x, positionY: this._mousePosition.y, duration: 0.4 }
-        );
-        tlCursor.to(
-            this._tweenCursorOuter, { positionX: this._mousePosition.x, positionY: this._mousePosition.y, duration: 0.6 }, 0
-        );
-        // tlCursor.fromTo(
-        //     this._tweenCursorOuter, {rotation: 0}, {rotation: "+=2" }, 0
-        // );
-
-        gsap.ticker.add(this._handleTick);
+        
+        this._tlCursor = gsap.timeline({ ease: "power3.in" });
+        this._tlCursor.to(this._tweenCursorInner, { positionX: this._mousePosition.x, positionY: this._mousePosition.y, duration: 0.4 }, 0);
+        this._tlCursor.to(this._tweenCursorOuter, { positionX: this._mousePosition.x, positionY: this._mousePosition.y, duration: 0.6 }, 0);
     }
 
     _tick(e) {
@@ -129,7 +120,6 @@ export default class CustomCursor extends Component {
         // this._context.strokeStyle = strokeStyle;
         // this._context.stroke();
         // this._context.closePath();
-        //console.log(Math.floor(e));
 
         const rotation = counter;
         this._context.save();
@@ -151,6 +141,7 @@ export default class CustomCursor extends Component {
 
     _drawInnerCircle() {
         const { lineWidth, radius, positionX, positionY, startAngle, endAngle, fillStyle } = this._tweenCursorInner;
+        this._context.save();
         this._context.beginPath();
         this._context.arc(positionX, positionY, radius, startAngle, endAngle);
         this._context.lineWidth = lineWidth;
@@ -161,8 +152,16 @@ export default class CustomCursor extends Component {
 
     _draw(e) {
         this._context.clearRect(0, 0, this._width, this._height);
+
         this._drawOuterCircle(e);
         this._drawInnerCircle();
+    }
+
+    _killTimelines() {
+        if (this._tlCursor) {
+            this._tlCursor.kill();
+            this._tlCursor === null;
+        }
     }
 
     _mouseMoveHandler = (e) => {

@@ -96,8 +96,11 @@ class Application extends React.Component {
                         </Transition>
                         
                         <Footer t={t} router={router.pathname}></Footer>
+
+                        {/* <CustomCursor /> */}
+
                         { isMediaQueryWide && 
-                            <CustomCursor />
+                            <span>HELLO</span>
                         }
                     </>
                 }
@@ -160,7 +163,14 @@ class Application extends React.Component {
     }
 
     _handleButtonMenuClick = (overlayMenuVisible) => {
-        this.setState({ overlayMenuVisible: overlayMenuVisible });
+        this.setState({ overlayMenuVisible: overlayMenuVisible }, () => {
+            if (overlayMenuVisible) {
+                document.body.style.overflowY = "hidden";
+            } else {
+                document.body.style.overflowY = "scroll";
+            }
+            //document.body.style.overflowY = "scroll";
+        });
     }
 
     _handlePreloaderCompleted = () => {

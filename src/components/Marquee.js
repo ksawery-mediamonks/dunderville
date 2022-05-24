@@ -53,7 +53,7 @@ export default class Marquee extends Component {
         const labelWidth = this.ui.label.current.offsetWidth;
         const multiplier = Math.ceil(resizeManager.viewportWidth / labelWidth);
 
-        console.log("multiplier: ", multiplier);
+        //console.log("multiplier: ", multiplier);
 
         if (multiplier > this._multiplier) {
             const difference = multiplier - this._multiplier;
@@ -101,8 +101,6 @@ export default class Marquee extends Component {
     }
 
     _cloneLabel(amount) {
-        console.log(amount);
-
         const fragment = document.createDocumentFragment();
         let clone;
         for (let i = 0; i < amount; i++) {
@@ -114,8 +112,6 @@ export default class Marquee extends Component {
     }
 
     _cloneContainer() {
-        console.log('clone container');
-
         if (this._clone) {
             this.ui.marquee.current.removeChild(this._clone);
         }

@@ -87,6 +87,8 @@
         top: rem(58px);
         left: rem(52px);
 
+        margin: 0;
+
         font-family: $font-plaak;
         font-size: rem(26px);
 
@@ -103,6 +105,8 @@
 }
 
 .order {
+    margin-right: rem(5px);
+
     text-decoration: none;
 
     color: $color-dark-charcoal;

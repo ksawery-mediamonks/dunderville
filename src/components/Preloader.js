@@ -132,7 +132,7 @@ export default class Preloader extends Component {
     }
 
     _removeQueue() {
-        console.log("_removeQueue: ", this._queue);
+        //console.log("_removeQueue: ", this._queue);
         if (this._queue) {
             this._queue.destroy();
             this._queue === null;
@@ -141,7 +141,7 @@ export default class Preloader extends Component {
 
     _playTlProgress(progress) {
         gsap.to(this._tlProgress, { progress });
-        console.log('progress:', this._tlProgress);
+        //console.log('progress:', this._tlProgress);
     }
 
     _handleTlProgressUpdate = () => {
@@ -151,7 +151,7 @@ export default class Preloader extends Component {
     _handleQueueStateChange = (state) => {
         const { onPreloaderCompleted } = this.props;
 
-        console.log('state:', state);
+        //console.log('state:', state);
 
         switch (state) {
             case QUEUE_STATE.LOADING: {

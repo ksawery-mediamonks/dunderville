@@ -1,0 +1,131 @@
+@import 'styles/partials/inputs';
+
+.form {
+    display: flex;
+
+    flex-direction: column;
+
+    font-family: $font-mono;
+
+    align-items: flex-start;
+    gap: rem(37px);
+}
+
+.label {
+    position: relative;
+
+    width: 100%;
+}
+
+.copy {
+    position: absolute;
+    top: rem(-31px);
+    left: rem(36px);
+
+    padding: rem(16px) rem(19px);
+
+    background-color: $color-chinese-white;
+
+    font-family: $font-mono;
+    font-size: rem(21px);
+
+    text-transform: uppercase;
+}
+
+.input {
+    @extend .input;
+
+    height: rem(174px);
+
+    font-size: rem(21px);
+}
+
+.textarea {
+    @extend .input;
+
+    height: rem(580px);
+
+    font-size: rem(21px);
+}
+
+.button {
+    position: relative;
+    display: flex;
+
+    width: rem(300px);
+    height: rem(100px);
+
+    margin-bottom: rem(119px);
+
+    border: none;
+
+    background-color: $color-dark-charcoal;
+
+    transition: background-color 0.3s;
+
+    gap: rem(20px);
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonCopy {
+    display: inline-block;
+
+    font-size: rem(22px);
+    line-height: 0;
+
+    text-transform: uppercase;
+
+    color: $color-chinese-white;
+}
+
+.svg {
+    width: rem(26px);
+    height: rem(9px);
+
+    fill: $color-chinese-white;
+}
+
+
+@include mq-wide {
+    .form {
+        max-width: rem(582px);
+
+        margin: 0 auto;
+    }
+
+    .copy {
+        position: absolute;
+        top: rem(-17px);
+        left: rem(19px);
+
+        padding: rem(9px);
+
+        font-size: rem(11px);
+    }
+
+    .input {
+        height: rem(65px);
+    }
+
+    .textarea {
+        height: rem(200px);
+    }
+
+    .button {
+        width: rem(188px);
+        height: rem(63px);
+    }
+
+    .buttonCopy {
+        display: none;
+    }
+
+    .svg {
+        width: rem(16px);
+        height: rem(5px);
+
+        fill: $color-chinese-white;
+    }
+}

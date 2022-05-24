@@ -9,27 +9,29 @@
     padding: 0 rem(25px);
 }
 
-.carousel__content {
+.content {
     @extend .list;
 
     position: relative;
 
     height: rem(1026px);
+    overflow: hidden;
 
     margin-bottom: rem(78px);
 }
 
-.carousel__content-block {
+.block {
     position: absolute;
     top: 0;
 
+    width: 100%;
     height: 100%;
     overflow: hidden;
 
     //margin-right: rem(25px);
 }
 
-.carousel__content-item {
+.item {
     display: flex;
 
     flex-direction: column;
@@ -44,7 +46,7 @@
     justify-content: center;
 }
 
-.carousel__content-testimony {
+.testimony {
     margin-bottom: rem(42px);
 
     font-family: $font-plaak-bold;
@@ -56,7 +58,7 @@
     color: $color-spanish-pink;
 }
 
-.carousel__content-author {
+.author {
     font-family: $font-plaak;
     font-size: rem(20px);
     letter-spacing: rem(3px);
@@ -67,7 +69,7 @@
     color: $color-spanish-pink;
 }
 
-.carousel__content-logo-container {
+.container {
     position: relative;
 
     width: 100%;
@@ -78,7 +80,7 @@
     background-color: $color-chinese-white;
 }
 
-.carousel__content-logo {
+.logo {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -90,8 +92,8 @@
     transform: translate(-50%,-50%);
 }
 
-.carousel__navigation {
+.navigation {
 }
 
-.carousel__navigation-button {
+.navigationButton {
 }
