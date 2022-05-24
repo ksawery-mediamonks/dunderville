@@ -7,9 +7,10 @@ import Marquee from 'components/Marquee';
 import Spritesheet from 'components/Spritesheet';
 import Faq from 'components/Faq';
 import FormContact from 'components/Form';
+import SubHeading from 'components/SubHeading';
+import classNames from 'classnames';
 
 import styles from './contact.module.scss';
-
 
 class Contact extends Component {
     el = createRef();
@@ -19,11 +20,12 @@ class Contact extends Component {
 
         return (
             <div ref={this.el} className={styles.contact}>
+                <SubHeading className={styles.contactSubheading} title={t('contact:subheading')} />
                 <Heading title={t('contact:heading')} />
+                <FormContact t={t}/>
                 {/* <Marquee /> */}
                 {/* <Spritesheet /> */}
                 {/* <Faq /> */}
-                <FormContact t={t}/>
             </div>
         );
     }

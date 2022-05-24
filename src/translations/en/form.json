@@ -3,7 +3,51 @@
     "heading": "Form With Validation",
 
     "form__name": "Name",
+    "form__lastname": "Lastname",
     "form__email": "Email",
+    "form__phone": "Phone",
     "form__message": "What’s on your mind",
+    "form__choice": "What is you need help with",
+    "form__choices": [
+        {
+            "choice": {
+                "copy": "Animation"
+            }
+        },
+        {
+            "choice": {
+                "copy": "Illustration"
+            }
+        },
+        {
+            "choice": {
+                "copy": "VFX"
+            }
+        },
+        {
+            "choice": {
+                "copy": "Other"
+            }
+        }
+    ],
+    "form__legal": "Terms and Conditions",
+    "form__legal__blocks": [
+        {
+            "block": {
+                "copy": "I agree to the Dunderville Terms and conditions",
+                "label": "terms",
+                "hrefCopy": "Terms and conditions",
+                "href": "#",
+                "required": true
+            }
+        },
+        {
+            "block": {
+                "copy": "I agree to receiving the Dunderville newsletter",
+                "label": "newsletter",
+                "required": false
+            }
+        }
+    ],
     "form__submit": "Submit"
 }

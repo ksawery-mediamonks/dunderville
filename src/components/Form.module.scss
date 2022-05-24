@@ -17,6 +17,17 @@
     width: 100%;
 }
 
+.container {
+    position: relative;
+
+    width: 100%;
+
+    padding: rem(36px);
+
+    border: 1px solid $color-dark-charcoal;
+}
+
+
 .copy {
     position: absolute;
     top: rem(-31px);
@@ -37,6 +48,8 @@
 
     height: rem(174px);
 
+    padding: rem(36px);
+
     font-size: rem(21px);
 }
 
@@ -45,7 +58,89 @@
 
     height: rem(580px);
 
+    padding: rem(36px);
+
+    resize: none;
+
     font-size: rem(21px);
+}
+
+.checkboxInput {
+    position: absolute;
+
+    width: 0;
+    height: 0;
+
+    opacity: 0;
+
+    cursor: pointer;
+}
+
+.checkboxCheckmark {
+    width: rem(21px);
+    height: rem(21px);
+
+    border: 1px solid $color-dark-charcoal;
+
+    background-color: $color-chinese-white;
+}
+
+.checkboxLabel {
+    position: relative;
+    display: flex;
+
+    width: fit-content;
+
+    margin-bottom: rem(36px);
+
+    align-items: center;
+    gap: rem(36px);
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.checkboxLabel:hover .checkboxInput ~ .checkboxCheckmark:after {
+    display: block;
+}
+
+.checkboxLabel .checkboxInput:checked ~ .checkboxCheckmark {
+    border: 1px solid $color-dark-charcoal;
+
+    background-color: $color-chinese-white;
+}
+
+.checkboxCheckmark:after {
+    position: absolute;
+    display: none;
+
+    content: '';
+}
+
+.checkboxLabel .checkboxInput:checked ~ .checkboxCheckmark:after {
+    display: block;
+}
+
+.checkboxLabel .checkboxCheckmark:after {
+    top: rem(-3px);
+    left: rem(8px);
+
+    width: rem(12px);
+    height: rem(22px);
+
+    border: solid $color-spanish-pink;
+    //border: solid $color-dark-charcoal;
+    border-width: 0 1px 1px 0;
+
+    transform: rotate(45deg);
+}
+
+.checkboxCopy {
+    font-family: $font-mono;
+    font-size: rem(21px);
+
+    text-transform: uppercase;
 }
 
 .button {
@@ -67,6 +162,10 @@
     align-content: center;
     justify-content: center;
     align-items: center;
+
+    &:hover {
+        background-color: $color-spanish-pink;
+    }
 }
 
 .buttonCopy {
@@ -105,12 +204,39 @@
         font-size: rem(11px);
     }
 
+    .checkboxCopy {
+        font-size: rem(11px);
+    }
+
+    .checkboxCheckmark {
+        width: rem(11px);
+        height: rem(11px);
+    }
+
+    .checkboxLabel .checkboxCheckmark:after {
+        top: rem(-1px);
+        left: rem(5px);
+
+        width: rem(5px);
+        height: rem(12px);
+        //border: solid $color-spanish-pink;
+
+        border: solid $color-dark-charcoal;
+        border-width: 0 1px 1px 0;
+
+        transform: rotate(45deg);
+    }
+
     .input {
         height: rem(65px);
+
+        font-size: rem(11px);
     }
 
     .textarea {
         height: rem(200px);
+
+        font-size: rem(11px);
     }
 
     .button {

@@ -31,7 +31,7 @@ export default class Navigation extends Component {
     }
 
     componentWillUnmount() {
-        //this._unmountAnimation();
+        this._unmountAnimation();
     }
 
     render() {
@@ -65,6 +65,19 @@ export default class Navigation extends Component {
         );
     }
 
+    _mountAnimation() {
+        this._timelineOverlay = gsap.timeline();
+        this._links = this.components.links.map((item) => item.current);
+
+        this.props.inverted ? 
+            this._timelineOverlay.fromTo(this._links, { opacity: 0, autoAlpha: 0 }, { opacity: 1, autoAlpha: 1,  duration: 0.4, ease: "power3.inOut", stagger: 0.25 }, 1) :
+            this._timelineOverlay.fromTo(this._links, { opacity: 0, autoAlpha: 0, y: 10 }, { opacity: 1, autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.inOut", stagger: 0.25 }, 0);
+    };
+
+    _unmountAnimation() {
+        console.log("unmount");
+    };
+
     _handleButtonMouseOver = () => {
         if (!this.props.inverted) {
             this.setState({ isHovered: true });
@@ -77,16 +90,4 @@ export default class Navigation extends Component {
         }
     }
 
-    _mountAnimation() {
-        const timelineOverlay = gsap.timeline();
-        const links = this.components.links.map((item) => item.current);
-
-        this.props.inverted ? 
-            timelineOverlay.fromTo(links, { opacity: 0, autoAlpha: 0 }, { opacity: 1, autoAlpha: 1,  duration: 0.4, ease: "power3.inOut", stagger: 0.25 }, 1) :
-            timelineOverlay.fromTo(links, { opacity: 0, autoAlpha: 0, y: 10 }, { opacity: 1, autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.inOut", stagger: 0.25 }, 0);
-    };
-
-    _unmountAnimation() {
-        console.log("unmount");
-    };
 }

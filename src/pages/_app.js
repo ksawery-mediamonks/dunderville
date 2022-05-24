@@ -156,21 +156,24 @@ class Application extends React.Component {
         this._resize();
     }
 
-    _handleRouteChange = () => {
-        setTimeout(() => {
-            this.setState({overlayMenuVisible: false});
-          }, "800")
-    }
-
-    _handleButtonMenuClick = (overlayMenuVisible) => {
+    _changePageOverflow = (overlayMenuVisible) => {
         this.setState({ overlayMenuVisible: overlayMenuVisible }, () => {
             if (overlayMenuVisible) {
                 document.body.style.overflowY = "hidden";
             } else {
                 document.body.style.overflowY = "scroll";
             }
-            //document.body.style.overflowY = "scroll";
         });
+    }
+
+    _handleRouteChange = () => {
+        this.setState({ overlayMenuVisible: true }, () => {
+            this._changePageOverflow();
+        });
+    }
+
+    _handleButtonMenuClick = (overlayMenuVisible) => {
+        this._changePageOverflow(overlayMenuVisible);
     }
 
     _handlePreloaderCompleted = () => {
