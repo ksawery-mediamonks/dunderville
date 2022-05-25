@@ -1,0 +1,167 @@
+.bio {
+    display: block;
+
+    width: 100%;
+
+    padding: rem(100px) 0;
+}
+
+.bio:first-of-type {
+    border-bottom: rem(1px) solid $color-dark-charcoal;
+}
+
+.fullname {
+    position: relative;
+    z-index: 1;
+
+    margin: 0;
+
+    font-family: $font-plaak-bold;
+    font-size: rem(105px);
+    letter-spacing: rem(-2px);
+
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.role {
+    position: relative;
+    z-index: 1;
+
+    margin: rem(48px) 0 0 0;
+
+    font-family: $font-plaak;
+    font-size: rem(19px);
+    font-weight: 400;
+    letter-spacing: rem(9px);
+
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.imageContainer {
+    position: relative;
+
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    /* margin-bottom: 3.125rem; */
+
+    padding-top: 100%;
+}
+
+.image {
+    position: absolute;
+    top: -20%;
+    left: -20%;
+    display: block;
+
+    width: 140%;
+    height: 140%;
+}
+
+.imageInverted {
+    position: absolute;
+    top: -20%;
+    left: -20%;
+    display: block;
+    display: none;
+
+    width: 140%;
+    height: 140%;
+}
+
+.description {
+    position: relative;
+
+    margin: rem(100px) 0 0 0;
+
+    font-family: $font-mono-light;
+    font-size: rem(26px);
+    font-weight: 400;
+    letter-spacing: rem(-1px);
+    line-height: rem(42px);
+
+    text-align: initial;
+    text-transform: initial;
+}
+
+@include mq-wide {
+    .bio {
+        position: relative;
+
+        margin: rem(15px) auto 0 auto;
+    }
+
+    .bio:first-of-type {
+        border-bottom: none;
+
+        &::before {
+            position: absolute;
+            right: 0;
+            z-index: 1;
+
+            width: rem(1px);
+            height: 100%;
+
+            background-color: $color-dark-charcoal;
+
+            content: '';
+        }
+    }
+
+    .bio {
+        position: relative;
+        display: inline-block;
+
+        width: 50%;
+        width: 50%;
+        height: rem(1085px);
+
+        padding: rem(39px) rem(110px);
+
+        vertical-align: top;
+    }
+
+    .fullname {
+        padding-top: rem(39px);
+
+        font-size: rem(66px);
+    }
+
+    .role {
+        margin: rem(32px) 0 0 0;
+
+        font-size: rem(12px);
+        letter-spacing: rem(5px);
+    }
+
+    .description {
+        font-size: rem(16px);
+        font-weight: 400;
+        letter-spacing: rem(-1px);
+        line-height: rem(26px);
+    }
+
+    .buttonBackground {
+        width: rem(71px);
+        height: rem(71px);
+    }
+
+    .buttonIcon {
+        width: rem(14px);
+        height: rem(37px);
+    }
+
+    .buttonText {
+        width: rem(100px);
+        height: rem(100px);
+
+        font-size: rem(8px);
+    }
+
+    .button {
+        width: rem(100px);
+        height: rem(100px);
+    }
+}

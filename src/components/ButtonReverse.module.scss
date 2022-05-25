@@ -1,0 +1,89 @@
+
+.button {
+    position: absolute;
+    right: rem(60px);
+    bottom: rem(-50px);
+
+    width: rem(140px);
+    height: rem(140px);
+
+    &:hover {
+        .buttonBackground {
+            background-color: $color-chinese-white;
+        }
+    }
+}
+
+.buttonBackground {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    width: rem(100px);
+    height: rem(100px);
+
+    margin: auto;
+
+    border-radius: 50%;
+
+    background-color: $color-spanish-pink;
+
+    transition: background-color 0.3s;
+}
+
+.buttonIcon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    width: rem(20px);
+    height: rem(53px);
+
+    margin: auto;
+
+    fill: $color-dark-charcoal;
+}
+
+.buttonText {
+    font-family: $font-mono-light;
+    font-size: rem(22px);
+
+    fill: $color-dark-charcoal;
+}
+
+@include mq-regular {
+    .buttonText {
+        // width: rem(100px);
+        // height: rem(100px);
+        font-size: rem(12px);
+    }
+}
+
+@include mq-wide {
+    .buttonBackground {
+        width: rem(71px);
+        height: rem(71px);
+    }
+
+    .buttonIcon {
+        width: rem(14px);
+        height: rem(37px);
+    }
+
+    .buttonText {
+        width: rem(100px);
+        height: rem(100px);
+
+        font-size: rem(11px);
+        font-weight: 900;
+    }
+
+    .button {
+        width: rem(100px);
+        height: rem(100px);
+    }
+}

@@ -22,10 +22,10 @@ class Contact extends Component {
             <div ref={this.el} className={styles.contact}>
                 <SubHeading className={styles.contactSubheading} title={t('contact:subheading')} />
                 <Heading title={t('contact:heading')} />
+                <Marquee />
                 <FormContact t={t}/>
-                {/* <Marquee /> */}
                 {/* <Spritesheet /> */}
-                {/* <Faq /> */}
+                <Faq />
             </div>
         );
     }

@@ -23,18 +23,11 @@ export default class ButtonMenu extends Component {
                 {t('header:menu.copy')}
                 <div className={styles['button-menu__block']}></div>
                 <div className={styles['button-menu__icon']}>
-
                 {overlayMenuVisible ? (
                     <img className={styles.close} ref={this.ui.icon} src='/assets/img/burger-close.svg' />
                         ) : (
                     <img className={styles.open} ref={this.ui.icon} src='/assets/img/burger.svg' />
                 )}
-                {/* {overlayMenuVisible && (
-                    <img ref={this.ui.icon} src='/assets/img/burger-close.svg' />
-                )}
-                {!overlayMenuVisible && (
-                    <img ref={this.ui.icon} src='/assets/img/burger.svg' />
-                )} */}
                 </div>
             </Button>
         );

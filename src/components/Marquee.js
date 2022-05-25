@@ -68,7 +68,7 @@ export default class Marquee extends Component {
         this.ui.line.current.style.width = `${lineWidth}px`;
         this._clone.style.width = `${lineWidth}px`;
 
-        //this._startInfinite(lineWidth, multiplier);
+        this._startInfinite(lineWidth, multiplier);
     }
 
     _startInfinite(width) {

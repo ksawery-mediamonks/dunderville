@@ -2,8 +2,6 @@ import React, { Component, createRef } from 'react';
 import { gsap } from "gsap";
 
 import classNames from 'classnames';
-import { resizeManager } from '@superherocheesecake/next-resize-manager';
-import { isFunction } from 'utils/helpers'
 
 import styles from './Banner.module.scss';
 
@@ -30,10 +28,7 @@ export default class Banner extends Component {
     _multiplier = 1;
 
     componentDidMount() {
-        this._setupEventListeners();
-        this._resize();
-
-        this._introAnimation();
+        this._setupTl();
     }
 
     componentWillUnmount() {
@@ -91,55 +86,45 @@ export default class Banner extends Component {
         );
     }
 
-    _setupEventListeners() {
-        resizeManager.addEventListener('resize', this._resizeHandler);
-        resizeManager.addEventListener('resize:complete', this._resizeHandler);
-    }
-    
-    _removeEventListeners() {
-        resizeManager.removeEventListener('resize', this._resizeHandler);
-        resizeManager.removeEventListener('resize:complete', this._resizeHandler);
+    _setupTl() {
+        this._animateBannerIntro();
     }
 
-    _resize() {
-        console.log('resize');
+    _animateBannerIntro() {
+        this._tlBannerIntro= gsap.timeline({ delay: 0.16 });
+        this._tlBannerIntro.from(this.ui.label.current, { y: 50, onComplete: this._animateBannerLetters() });
     }
 
-    _killTimelines() {
-        if (this._tlBanner) {
-            this._tlBanner.kill();
-            this._tlBanner = null;
-        }
-    }
-
-    _animateBanner() {
-        this._tlBanner = gsap.timeline({ delay: 0.16 });
+    _animateBannerLetters() {
+        this._tlBannerLetters = gsap.timeline({ delay: 0.16 });
         // //!TODO: just one timeline, call oncomplete function reveal (boolean)
-        this._tlBanner.fromTo(this.ui.letterU1.current, { y: -8 }, { y: "-101%", duration: 0.54, ease: "power3.inOut" });
-        this._tlBanner.fromTo(this.ui.letterU2.current, { y: 29 }, { y: 0, duration: 0.54, ease: "power3.inOut"}, "-=0.54");
-        this._tlBanner.fromTo(this.ui.letterEline.current, { y: 10 }, { y: 0, duration: 0.4, ease: "back.out" });
-        this._tlBanner.fromTo(this.ui.letterV.current, {transformOrigin: "18% 35%", rotate: 23}, { rotate: "0", duration: 0.16, ease: "power3.inOut"});
-        this._tlBanner.fromTo(this.ui.letterEline.current, { y: -4 }, { y: 10, duration: 0.36, ease: "power1.inOut"}, 0);
-        this._tlBanner.fromTo(this.ui.letterD.current, { y: "110%" }, { y: 0, duration: 0.54, ease: "back.out(1.7)"}, 0);
-        this._tlBanner.fromTo(this.ui.letterI1.current, { y: 30 }, { y: -6, duration: 1, ease: "power3.out"}, 0);
-        // this._tlBanner.fromTo(this.ui.letterI2.current, { y: 23 }, { y: 0, duration: 1, ease: "power3.out"}, 0);
-        this._tlBanner.fromTo(this.ui.letterR.current, { x: -30 }, { x: 0, duration: 0.6, ease: "power3.inOut"}, 0.13);
-        this._tlBanner.fromTo(this.ui.letterL.current, { x: -17.5 }, { x: 0, duration: 0.83, ease: "power3.inOut"}, 0.13);
-        this._tlBanner.fromTo(this.ui.letterE.current, {y: 12 }, { y: 0, duration: 0.4, ease: "power3.inOut"}, 0.54);
-        this._tlBanner.fromTo(this.ui.letterN1.current, { y: -7 }, { y: 0, duration: 0.16, ease: "power1.in"}, 1.48);
-        this._tlBanner.fromTo(this.ui.letterN2.current, { y: 32 }, { y: "100%", duration: 0.16, ease: "power1.in"}, 1.48);
+        this._tlBannerLetters.fromTo(this.ui.letterU1.current, { y: -8 }, { y: "-101%", duration: 0.54, ease: "power3.inOut" });
+        this._tlBannerLetters.fromTo(this.ui.letterU2.current, { y: 29 }, { y: 0, duration: 0.54, ease: "power3.inOut"}, "-=0.54");
+        this._tlBannerLetters.fromTo(this.ui.letterEline.current, { y: 10 }, { y: 0, duration: 0.4, ease: "back.out" });
+        this._tlBannerLetters.fromTo(this.ui.letterV.current, {transformOrigin: "18% 35%", rotate: 23}, { rotate: "0", duration: 0.16, ease: "power3.inOut"});
+        this._tlBannerLetters.fromTo(this.ui.letterEline.current, { y: -4 }, { y: 10, duration: 0.36, ease: "power1.inOut"}, 0);
+        this._tlBannerLetters.fromTo(this.ui.letterD.current, { y: "110%" }, { y: 0, duration: 0.54, ease: "back.out(1.7)"}, 0);
+        this._tlBannerLetters.fromTo(this.ui.letterI1.current, { y: 30 }, { y: -6, duration: 1, ease: "power3.out"}, 0);
+        // this._tlBannerLetters.fromTo(this.ui.letterI2.current, { y: 23 }, { y: 0, duration: 1, ease: "power3.out"}, 0);
+        this._tlBannerLetters.fromTo(this.ui.letterR.current, { x: -30 }, { x: 0, duration: 0.6, ease: "power3.inOut"}, 0.13);
+        this._tlBannerLetters.fromTo(this.ui.letterL.current, { x: -17.5 }, { x: 0, duration: 0.83, ease: "power3.inOut"}, 0.13);
+        this._tlBannerLetters.fromTo(this.ui.letterE.current, {y: 12 }, { y: 0, duration: 0.4, ease: "power3.inOut"}, 0.54);
+        this._tlBannerLetters.fromTo(this.ui.letterN1.current, { y: -7 }, { y: 0, duration: 0.16, ease: "power1.in"}, 1.48);
+        this._tlBannerLetters.fromTo(this.ui.letterN2.current, { y: 32 }, { y: "100%", duration: 0.16, ease: "power1.in"}, 1.48);
     
-        this._tlBanner.timeScale(0.3);	
+        this._tlBannerLetters.timeScale(0.3);	
         //GSDevTools.create();
     }
 
-    _introAnimation() {
-        this._tlIntro= gsap.timeline({ delay: 0.16 });
-
-        this._tlIntro.from(this.ui.label.current, { y: 50, onComplete: this._animateBanner() });
-    }
-
-    _resizeHandler = () => {
-        this._resize();
+    _killTimelines() {
+        if (this._tlBannerLetters) {
+            this._tlBannerLetters.kill();
+            this._tlBannerLetters = null;
+        }
+        
+        if (this._tlBannerIntro) {
+            this._tlBannerIntro.kill();
+            this._tlBannerIntro = null;
+        }
     }
 }

@@ -83,6 +83,8 @@
     border: 1px solid $color-dark-charcoal;
 
     background-color: $color-chinese-white;
+
+    cursor: pointer;
 }
 
 .checkboxLabel {
@@ -131,7 +133,7 @@
 
     border: solid $color-spanish-pink;
     //border: solid $color-dark-charcoal;
-    border-width: 0 1px 1px 0;
+    border-width: 0 rem(1px) rem(1px) 0;
 
     transform: rotate(45deg);
 }
